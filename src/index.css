@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 220 20% 96%;
-    --foreground: 220 20% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 40%;
-    --border: 220 15% 85%;
-    --accent: 199 89% 38%;
-    --accent-foreground: 0 0% 100%;
+    --background: 36 33% 94%;
+    --foreground: 30 15% 12%;
+    --card: 36 25% 90%;
+    --card-foreground: 30 15% 12%;
+    --muted: 35 20% 85%;
+    --muted-foreground: 30 10% 40%;
+    --border: 35 15% 78%;
+    --accent: 40 49% 88%;
+    --accent-foreground: 30 15% 10%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 96%;
-    --card: 222 35% 9%;
-    --card-foreground: 210 40% 96%;
-    --muted: 223 25% 14%;
-    --muted-foreground: 218 15% 55%;
-    --border: 223 20% 16%;
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
+    --border: 0 0% 14%;
+    --accent: 40 49% 88%;
+    --accent-foreground: 0 0% 5%;
   }
 
   * {
@@ -90,12 +90,9 @@
   .gradient-text {
     background: radial-gradient(
       64.18% 64.18% at 71.16% 35.69%,
-      #def9fa 0.89%,
-      #bef3f5 17.23%,
-      #9dedf0 42.04%,
-      #7de7eb 55.12%,
-      #5ce1e6 71.54%,
-      #33bbcf 100%
+      #ffffff 0%,
+      #f0e6d3 40%,
+      #d9c9a8 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -105,11 +102,9 @@
   :root .gradient-text {
     background: radial-gradient(
       64.18% 64.18% at 71.16% 35.69%,
-      #0ea5e9 0.89%,
-      #0891b2 30%,
-      #0e7490 55%,
-      #155e75 80%,
-      #164e63 100%
+      #1a1a1a 0%,
+      #3d3530 50%,
+      #5c4f3d 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -119,12 +114,9 @@
   .dark .gradient-text {
     background: radial-gradient(
       64.18% 64.18% at 71.16% 35.69%,
-      #def9fa 0.89%,
-      #bef3f5 17.23%,
-      #9dedf0 42.04%,
-      #7de7eb 55.12%,
-      #5ce1e6 71.54%,
-      #33bbcf 100%
+      #ffffff 0%,
+      #f0e6d3 40%,
+      #d9c9a8 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -160,42 +152,42 @@
 
 /* Ambient gradient orbs */
 .blue__gradient {
-  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  background: linear-gradient(180deg, rgba(240, 230, 211, 0) 0%, #3d3530 100%);
   filter: blur(123px);
 }
 
 .pink__gradient {
-  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  background: linear-gradient(90deg, #d9c9a8 0%, #f0e6d3 100%);
   filter: blur(900px);
 }
 
 .cyan__gradient {
   background: linear-gradient(
     157.81deg,
-    #def9fa -43.27%,
-    #bef3f5 -21.24%,
-    #9dedf0 12.19%,
-    #7de7eb 29.82%,
-    #5ce1e6 51.94%,
-    #33bbcf 90.29%
+    #ffffff -43.27%,
+    #f0e6d3 -21.24%,
+    #d9c9a8 12.19%,
+    #c4b08a 29.82%,
+    #b09870 51.94%,
+    #8c7a5a 90.29%
   );
   filter: blur(150px);
-  opacity: 0.15;
+  opacity: 0.12;
 }
 
 :root .cyan__gradient {
-  opacity: 0.1;
-}
-
-.dark .cyan__gradient {
   opacity: 0.08;
 }
 
+.dark .cyan__gradient {
+  opacity: 0.06;
+}
+
 .white__gradient {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(240, 230, 211, 0.6);
   filter: blur(750px);
 }
 
 .dark .white__gradient {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(240, 230, 211, 0.02);
 }

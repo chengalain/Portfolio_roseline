@@ -62,17 +62,26 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Magnetic strength={0.3}>
-          <a
-            href="#"
-            aria-label="Go to top"
-            className="text-lg font-bold tracking-tight transition-colors hover:text-accent"
-          >
-            <span className="text-muted-foreground">&lt;</span>
-            SN
-            <span className="text-muted-foreground"> /&gt;</span>
-          </a>
-        </Magnetic>
+        <div className="flex items-center gap-4">
+          {/* CV FR / EN */}
+          <div className="flex items-center gap-2">
+            <a href="/cv_fr.pdf" target="_blank" rel="noopener noreferrer"
+              className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
+              CV FR
+            </a>
+            <span className="text-border text-xs">|</span>
+            <a href="/cv_en.pdf" target="_blank" rel="noopener noreferrer"
+              className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
+              CV EN
+            </a>
+          </div>
+
+          <Magnetic strength={0.3}>
+            <a href="#" aria-label="Retour en haut">
+              <img src="/logo.png" alt="Roseline Cheng" className="h-8 w-auto object-contain" />
+            </a>
+          </Magnetic>
+        </div>
 
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((item) => (
@@ -102,6 +111,11 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
+          <a href="/cv_fr.pdf" target="_blank" rel="noopener noreferrer"
+            className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">FR</a>
+          <span className="text-border text-xs">|</span>
+          <a href="/cv_en.pdf" target="_blank" rel="noopener noreferrer"
+            className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">EN</a>
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}

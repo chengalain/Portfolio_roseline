@@ -13,31 +13,23 @@ export type { Education } from "./education";
 export { PROJECTS } from "./projects";
 export type { Project, TechIcon } from "./projects";
 
-export {
-  OPEN_SOURCE_CONTRIBUTIONS,
-  getOrgSummaries,
-} from "./openSource";
-export type { Contribution, OrgSummary } from "./openSource";
-
-export const RESUME_LINK =
-  "https://drive.google.com/file/d/1fAlHoNfCHkJCkmcpGFzbanTZorT2r2U_/view";
-export const REPO_LINK = "https://github.com/Sudhanva-Nadiger/Portfolio";
+export const RESUME_LINK = "/cv_fr.pdf";
+export const REPO_LINK = "https://github.com/acheng-roseline/Portfolio";
 
 export const ABOUT_ME = {
-  name: "Sudhanva Nadiger",
-  firstName: "Sudhanva",
-  lastName: "Nadiger",
+  name: "Roseline Cheng",
+  firstName: "Roseline",
+  lastName: "Cheng",
   tagLine:
-    "MTS @Nutanix · Ex-SDE @Flipkart · Open Source Contributor",
-  intro: "Software Development Engineer based in India.",
-  email: "sudhanvanadiger12@gmail.com",
+    "Étudiante Design UX/UI · Motion Design · Gobelins",
+  intro: "Étudiante en Design Graphique & UX/UI basée à Paris.",
+  email: "roseline.cheng2006@gmail.com",
 };
 
 export const NAV_LINKS = [
-  { link: "#experience", title: "Experience" },
-  { link: "#skills", title: "Skills" },
-  { link: "#education", title: "Education" },
-  { link: "#projects", title: "Projects" },
-  { link: "#opensource", title: "Open Source" },
+  { link: "#experience", title: "Expérience" },
+  { link: "#skills", title: "Compétences" },
+  { link: "#projects", title: "Projets" },
+  { link: "#education", title: "Formation" },
   { link: "#contact", title: "Contact" },
 ];

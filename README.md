@@ -1,4 +1,4 @@
-# Sudhanva Nadiger — Portfolio
+# Roseline Cheng — Portfolio
 
 A modern, responsive developer portfolio built with React, TypeScript, and Tailwind CSS. Features a dark-first design with an optional light theme, smooth animations, and interactive UI elements.
 

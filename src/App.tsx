@@ -11,11 +11,7 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
-import OpenSource from "@/components/OpenSource";
-import TLDR from "@/components/TLDR";
 import Footer from "@/components/Footer";
-import LightModeBanner from "@/components/LightModeBanner";
-import TLDRFloat from "@/components/TLDRFloat";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -44,20 +40,16 @@ export default function App() {
       {!loading && (
         <div className="relative min-h-screen">
           <CustomCursor />
-          <LightModeBanner />
           <GradientOrbs />
           <Navbar />
           <ScrollToTop />
-          <TLDRFloat />
           <main>
             <Hero />
             <MarqueeStrip />
             <Experience />
             <Skills />
-            <Education />
             <Projects />
-            <OpenSource />
-            <TLDR />
+            <Education />
             <Footer />
           </main>
         </div>

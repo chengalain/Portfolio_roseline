@@ -1,5 +1,4 @@
 import { Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
 import { useTheme } from "@/lib/theme";
 
 export default function ThemeToggle() {
@@ -8,21 +7,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex h-9 w-9 items-center justify-center rounded-full
-                 border border-border bg-card transition-colors hover:bg-muted"
-      aria-label="Toggle theme"
+      aria-label="Changer le thème"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-border
+                 bg-card/50 text-muted-foreground transition-all hover:border-accent/50 hover:text-foreground"
     >
-      <motion.div
-        initial={false}
-        animate={{ rotate: theme === "dark" ? 0 : 180, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      >
-        {theme === "dark" ? (
-          <Moon className="h-4 w-4 text-muted-foreground" />
-        ) : (
-          <Sun className="h-4 w-4 text-muted-foreground" />
-        )}
-      </motion.div>
+      {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>
   );
 }

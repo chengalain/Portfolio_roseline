@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 
 const KEYWORDS = [
-  "Full-Stack",
-  "Open Source",
-  "React",
-  "TypeScript",
-  "System Design",
-  "Problem Solver",
-  "Cloud Native",
-  "Performance",
-  "Scalable",
-  "Ambitious",
+  "Graphic Design",
+  "UI/UX Design",
+  "Figma",
+  "Illustration",
+  "Motion Design",
+  "Video Editing",
+  "Adobe Creative Suite",
+  "Visual Identity",
+  "Creative Research",
+  "Social Media Content",
+  "Multilingual",
+  "Detail-Oriented",
+  "Creative Thinker"
 ];
 
 function KeywordSet() {

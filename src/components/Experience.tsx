@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import { EXPERIENCES } from "@/constants";
 
 export default function Experience() {
@@ -10,113 +9,97 @@ export default function Experience() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
+        className="mb-16"
       >
-        <h2 className="section-title">Experience</h2>
-        <p className="section-subtitle">Where I've worked and contributed</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Parcours</p>
+        <h2
+          className="leading-none text-foreground"
+          style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 400 }}
+        >
+          Expériences
+        </h2>
       </motion.div>
 
-      <div className="relative mt-12">
-        {/* Timeline line */}
-        <div className="absolute left-[19px] top-2 hidden h-[calc(100%-16px)] w-px bg-border md:block" />
-
-        <div className="space-y-8">
-          {EXPERIENCES.map((exp, idx) => (
-            <motion.div
-              key={exp.organisation}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="relative md:pl-12"
+      <div className="grid gap-px md:grid-cols-2" style={{ background: "hsl(var(--border))" }}>
+        {EXPERIENCES.map((exp, idx) => (
+          <motion.div
+            key={exp.organisation}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: idx * 0.15 }}
+            className="group relative flex flex-col justify-between bg-background p-10 transition-colors duration-500 hover:bg-card"
+          >
+            {/* Numéro */}
+            <span
+              className="absolute top-8 right-10 text-[6rem] font-bold leading-none select-none pointer-events-none"
+              style={{ color: "hsl(var(--border))", fontFamily: "Georgia, serif", lineHeight: 1 }}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-2.5 top-1.5 hidden h-3 w-3 rounded-full border-2 border-accent bg-background md:block" />
+              0{idx + 1}
+            </span>
 
-              <div className="glass-card p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-muted">
-                      <img
-                        src={exp.logo}
-                        alt={exp.organisation}
-                        className="h-7 w-7 object-contain"
-                      />
-                    </div>
-                    <div>
-                      <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold transition-colors hover:text-accent"
-                      >
-                        {exp.organisation}
-                      </a>
-                    </div>
+            {/* Header */}
+            <div>
+              {/* Logo + Entreprise */}
+              <div className="flex items-center gap-4 mb-8">
+                {exp.logo && (
+                  <div className="h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-muted flex items-center justify-center">
+                    <img
+                      src={exp.logo}
+                      alt={exp.organisation}
+                      className="h-8 w-8 object-contain"
+                    />
                   </div>
-                  <a
-                    href={exp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${exp.organisation} website`}
-                    className="shrink-0 text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-
-                <div className="mt-4 space-y-4">
-                  {exp.positions.map((pos, posIdx) => {
-                    const allTech = pos.content
-                      ?.flatMap((c) => c.tech ?? [])
-                      .filter(
-                        (t, i, arr) => arr.findIndex((x) => x.id === t.id) === i
-                      );
-
-                    return (
-                      <div
-                        key={posIdx}
-                        className={
-                          posIdx > 0 ? "border-t border-border/50 pt-4" : ""
-                        }
-                      >
-                        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                          <h3 className="text-sm font-medium">{pos.title}</h3>
-                          <span className="text-xs text-muted-foreground">
-                            {pos.duration}
-                          </span>
-                        </div>
-
-                        {pos.content && pos.content.length > 0 && (
-                          <div className="mt-2.5 space-y-1.5">
-                            {pos.content.map((c, cIdx) => (
-                              <div key={cIdx} className="flex gap-2 text-sm text-muted-foreground">
-                                {pos.content!.length > 1 && (
-                                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/50" />
-                                )}
-                                <p>{c.text}</p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {allTech && allTech.length > 0 && (
-                          <div className="mt-3 flex flex-wrap gap-1.5">
-                            {allTech.map((t) => (
-                              <span key={t.id} className="pill text-[11px]">
-                                <t.icon className="h-3 w-3" />
-                                {t.name}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                )}
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
+                    {exp.positions[0].duration}
+                  </p>
+                  <h3 className="font-semibold text-foreground text-lg">{exp.organisation}</h3>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              {/* Titre du poste */}
+              <p
+                className="text-2xl text-foreground/80 mb-8 leading-snug"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400 }}
+              >
+                {exp.positions[0].title}
+              </p>
+
+              {/* Missions */}
+              <ul className="space-y-3">
+                {exp.positions[0].content?.map((c, cIdx) => (
+                  <li key={cIdx} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+                    <span className="mt-2 h-px w-4 shrink-0 bg-muted-foreground/40" />
+                    {c.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Outils */}
+            {exp.positions[0].content?.some(c => c.tech && c.tech.length > 0) && (
+              <div className="mt-10 flex flex-wrap gap-2">
+                {exp.positions[0].content
+                  .flatMap(c => c.tech ?? [])
+                  .filter((t, i, arr) => arr.findIndex(x => x.id === t.id) === i)
+                  .map(t => (
+                    <span
+                      key={t.id}
+                      className="inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border/50 px-3 py-1 rounded-full"
+                    >
+                      <t.icon className="h-3 w-3" />
+                      {t.name}
+                    </span>
+                  ))}
+              </div>
+            )}
+
+            {/* Ligne décorative au hover */}
+            <div className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all duration-500 group-hover:w-full" />
+          </motion.div>
+        ))}
       </div>
     </section>
   );

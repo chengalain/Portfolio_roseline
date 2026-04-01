@@ -1,4 +1,4 @@
-import nitk from "@/assets/images/Education/nitk.png";
+import gobelins from "@/assets/images/Education/gobelins.png";
 
 export interface Education {
   id: string;
@@ -13,11 +13,11 @@ export interface Education {
 export const EDUCATION_LIST: Education[] = [
   {
     id: "education-1",
-    icon: nitk,
-    title: "National Institute of Technology Karnataka, Surathkal",
-    degree: "Bachelor of Technology",
-    duration: "December 2020 — April 2024",
-    content1: "Major: Mechanical Engineering",
-    content2: "Minor: Information Technology",
+    icon: gobelins,
+    title: "Gobelins, l'école de l'image — Paris",
+    degree: "DNMADE Graphisme",
+    duration: "2025 — 2027 (en cours)",
+    content1: "Spécialité : Design Graphique & UX/UI",
+    content2: "Alternance à partir de septembre 2026",
   },
 ];

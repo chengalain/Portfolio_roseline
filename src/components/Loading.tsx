@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
-import heroAnimation from "@/assets/images/Hero/main_comp.json";
+import logo from "/logo.png";
 
 export default function Loading() {
   return (
@@ -15,7 +14,7 @@ export default function Loading() {
         transition={{ duration: 0.5 }}
         className="w-64 md:w-80"
       >
-        <Lottie animationData={heroAnimation} loop />
+        <img src={logo} alt="Roseline Cheng" className="w-full h-full object-contain" />
       </motion.div>
 
       <motion.div
@@ -26,7 +25,7 @@ export default function Loading() {
       >
         <span className="text-lg font-bold tracking-tight">
           <span className="text-muted-foreground">&lt;</span>
-          <span className="gradient-text">Sudhanva</span>
+          <span className="gradient-text">Roseline</span>
           <span className="text-muted-foreground"> /&gt;</span>
         </span>
       </motion.div>
