@@ -28,7 +28,6 @@ export const ABOUT_ME = {
 
 export const NAV_LINKS = [
   { link: "#experience", title: "Expérience" },
-  { link: "#skills", title: "Compétences" },
   { link: "#projects", title: "Projets" },
   { link: "#education", title: "Formation" },
   { link: "#contact", title: "Contact" },

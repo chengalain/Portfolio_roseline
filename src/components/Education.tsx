@@ -14,7 +14,7 @@ export default function Education() {
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Parcours académique</p>
         <h2
           className="leading-none text-foreground"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 400 }}
+          style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700 }}
         >
           Formation
         </h2>
@@ -47,7 +47,7 @@ export default function Education() {
               <div>
                 <h3
                   className="text-foreground leading-snug"
-                  style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "clamp(1.2rem, 2vw, 1.5rem)", fontWeight: 400 }}
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.2rem, 2vw, 1.5rem)", fontWeight: 700 }}
                 >
                   {edu.title}
                 </h3>

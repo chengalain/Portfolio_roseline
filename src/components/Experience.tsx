@@ -14,7 +14,7 @@ export default function Experience() {
         <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Parcours</p>
         <h2
           className="leading-none text-foreground"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 400 }}
+          style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700 }}
         >
           Expériences
         </h2>
@@ -33,7 +33,7 @@ export default function Experience() {
             {/* Numéro */}
             <span
               className="absolute top-8 right-10 text-[6rem] font-bold leading-none select-none pointer-events-none"
-              style={{ color: "hsl(var(--border))", fontFamily: "Georgia, serif", lineHeight: 1 }}
+              style={{ color: "hsl(var(--border))", fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1 }}
             >
               0{idx + 1}
             </span>
@@ -62,7 +62,7 @@ export default function Experience() {
               {/* Titre du poste */}
               <p
                 className="text-2xl text-foreground/80 mb-8 leading-snug"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400 }}
+                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
               >
                 {exp.positions[0].title}
               </p>

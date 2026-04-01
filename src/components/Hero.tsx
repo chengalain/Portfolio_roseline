@@ -56,9 +56,9 @@ export default function Hero() {
             style={{
               x: moveX,
               y: moveY,
-              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, serif",
               fontSize: "clamp(3.5rem, 8vw, 7.5rem)",
-              fontWeight: 400,
+              fontWeight: 700,
               lineHeight: 0.95,
             }}
             className="text-foreground tracking-tight"
