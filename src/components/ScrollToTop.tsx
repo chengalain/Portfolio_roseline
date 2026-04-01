@@ -27,7 +27,7 @@ export default function ScrollToTop() {
           className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center
                      rounded-full border border-border bg-card/80 text-muted-foreground shadow-lg
                      backdrop-blur-sm transition-colors hover:border-accent/50 hover:text-accent"
-          aria-label="Scroll to top"
+          aria-label="Retour en haut"
         >
           <ArrowUp className="h-4 w-4" />
         </motion.button>

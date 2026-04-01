@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { FileText } from "lucide-react";
+import { ArrowDown, FileText } from "lucide-react";
 import { ABOUT_ME, SOCIAL_MEDIA, RESUME_LINK } from "@/constants";
 import Magnetic from "./Magnetic";
 import profile from "@/assets/images/profile.png";
@@ -137,26 +137,22 @@ export default function Hero() {
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div
+        <motion.a
+          href="#experience"
+          aria-label="Défiler vers l'expérience"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-auto pt-12 flex items-center gap-3"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
         >
           <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-1"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2"
           >
-            <div className="h-6 w-px bg-muted-foreground/30" />
-            <a
-              href="#experience"
-              className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/40 hover:text-muted-foreground transition-colors"
-            >
-              Scroll
-            </a>
+            <ArrowDown className="h-6 w-6 text-foreground/70 hover:text-foreground transition-colors" />
           </motion.div>
-        </motion.div>
+        </motion.a>
       </div>
 
       {/* Droite — photo + demi-cercle, collé au bord */}

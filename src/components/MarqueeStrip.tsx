@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 
 const KEYWORDS = [
-  "Graphic Design",
-  "UI/UX Design",
+  "Design Graphique",
+  "Design UX/UI",
   "Figma",
   "Illustration",
   "Motion Design",
-  "Video Editing",
-  "Adobe Creative Suite",
-  "Visual Identity",
-  "Creative Research",
-  "Social Media Content",
-  "Multilingual",
-  "Detail-Oriented",
-  "Creative Thinker"
+  "Montage Vidéo",
+  "Suite Adobe Creative",
+  "Identité Visuelle",
+  "Recherche Créative",
+  "Contenu Réseaux Sociaux",
+  "Multilingue",
+  "Soucieuse du Détail",
+  "Pensée Créative"
 ];
 
 function KeywordSet() {

@@ -23,7 +23,7 @@ export interface SkillGroup {
 
 export const SKILLS_LIST: SkillGroup[] = [
   {
-    title: "Design & UI",
+    title: "Design & Interface",
     items: [
       { id: "d-1", icon: SiFigma, name: "Figma" },
       { id: "d-2", icon: SiAdobeillustrator, name: "Illustrator" },

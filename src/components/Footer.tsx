@@ -19,7 +19,7 @@ export default function Footer() {
             <img
               src={profilePic}
               alt={ABOUT_ME.name}
-              className="h-full w-full rounded-full object-cover"
+              className="h-full w-full rounded-full object-cover object-top"
             />
           </div>
           <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[10px] text-accent-foreground">
@@ -27,10 +27,10 @@ export default function Footer() {
           </span>
         </div>
 
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Me contacter</h2>
         <p className="section-subtitle mx-auto mt-3">
-          I'm currently open to new opportunities. Whether you have a question
-          or just want to say hi, my inbox is always open.
+          Je suis disponible pour un stage dès mai 2026 et une alternance dès septembre 2026.
+          N'hésitez pas à me contacter pour toute question ou opportunité.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -42,7 +42,7 @@ export default function Footer() {
                          hover:opacity-90 hover:shadow-lg hover:shadow-accent/20"
             >
               <Mail className="h-4 w-4" />
-              Say Hello
+              Envoyer un message
             </a>
           </Magnetic>
           <Magnetic strength={0.2}>
@@ -53,7 +53,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 rounded-full border border-border
                          bg-card/50 px-6 py-2.5 text-sm font-medium transition-all hover:bg-muted"
             >
-              Resume
+              Mon CV
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </Magnetic>

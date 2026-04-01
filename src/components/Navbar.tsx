@@ -61,19 +61,13 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="flex w-full items-center justify-between px-8 py-4">
         <div className="flex items-center gap-4">
-          {/* CV FR / EN */}
-          <div className="flex items-center gap-2">
-            <a href="/cv_fr.pdf" target="_blank" rel="noopener noreferrer"
-              className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-              CV FR
-            </a>
+          {/* Toggle FR / EN — à implémenter */}
+          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+            <button className="text-xs font-medium text-foreground transition-colors px-1">FR</button>
             <span className="text-border text-xs">|</span>
-            <a href="/cv_en.pdf" target="_blank" rel="noopener noreferrer"
-              className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-              CV EN
-            </a>
+            <button className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors px-1">EN</button>
           </div>
 
           <Magnetic strength={0.3}>
@@ -111,17 +105,17 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3 md:hidden">
-          <a href="/cv_fr.pdf" target="_blank" rel="noopener noreferrer"
-            className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">FR</a>
-          <span className="text-border text-xs">|</span>
-          <a href="/cv_en.pdf" target="_blank" rel="noopener noreferrer"
-            className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">EN</a>
+          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+            <button className="text-xs font-medium text-foreground px-1">FR</button>
+            <span className="text-border text-xs">|</span>
+            <button className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors px-1">EN</button>
+          </div>
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-full
                        border border-border bg-card"
-            aria-label="Toggle menu"
+            aria-label="Ouvrir le menu"
           >
             {isOpen ? (
               <X className="h-4 w-4" />

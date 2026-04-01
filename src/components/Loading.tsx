@@ -23,10 +23,8 @@ export default function Loading() {
         transition={{ delay: 0.3, duration: 0.4 }}
         className="mt-6"
       >
-        <span className="text-lg font-bold tracking-tight">
-          <span className="text-muted-foreground">&lt;</span>
-          <span className="gradient-text">Roseline</span>
-          <span className="text-muted-foreground"> /&gt;</span>
+        <span className="text-lg font-medium tracking-widest text-foreground/80">
+          ✨ Roseline ✨
         </span>
       </motion.div>
 
