@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
-import { SiFigma } from "react-icons/si";
+import { SiFigma, SiBlender } from "react-icons/si";
 import topRic from "@/assets/images/Projects/ricmaa/top_ric.png";
+import topMontre from "@/assets/images/Projects/blender/top_montre.png";
 
 export interface TechIcon {
   id: string;
@@ -32,6 +33,19 @@ export const PROJECTS: Project[] = [
       "Conception UX/UI du futur site web de Ricmaa Custom. Maquettes réalisées sur Figma lors de mon stage : architecture de l'information, wireframes et design final.",
     stack: [
       { id: "icon-1", icon: SiFigma, name: "Figma" },
+    ],
+  },
+  {
+    id: "project-blender",
+    title: "Montre 3D — Blender",
+    github: "#",
+    slug: "montre",
+    image: topMontre,
+    imageFit: "cover",
+    content:
+      "Modélisation et animation 3D d'une montre réalisées en cours sur Blender. Travail sur la géométrie, les matériaux et le rendu.",
+    stack: [
+      { id: "icon-1", icon: SiBlender, name: "Blender" },
     ],
   },
   {
