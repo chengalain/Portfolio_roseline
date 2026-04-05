@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import topRic from "@/assets/images/Projects/ricmaa/top_ric.png";
+import ricmaaBg from "@/assets/images/Projects/ricmaa/background.png";
 import ricInsta from "@/assets/images/Projects/ricmaa/ric_insta.png";
 import ricmaaTriangle from "@/assets/images/Projects/ricmaa/ricmaa_triangle.png";
 import couleurRic from "@/assets/images/Projects/ricmaa/couleur_ric.png";
@@ -20,6 +21,15 @@ import figmaaRic3 from "@/assets/images/Projects/ricmaa/design_final/figmaa_ric3
 import mokup1 from "@/assets/images/Projects/ricmaa/design_final/mokup1.png";
 import mokup2 from "@/assets/images/Projects/ricmaa/design_final/mokup2.png";
 
+const slides = [
+  { img: ricmaaRic,     label: "Ricmaa",       desc: "Présentation de la marque" },
+  { img: hemshRic,      label: "Hemsh",        desc: "Page partenaire" },
+  { img: minisoRic,     label: "Miniso",       desc: "Page partenaire" },
+  { img: mixoonRic,     label: "Mixoon",       desc: "Page partenaire" },
+  { img: stylekorenRic, label: "Style Koren",  desc: "Page partenaire" },
+  { img: yesstyleRic,   label: "YesStyle",     desc: "Page partenaire" },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
@@ -34,6 +44,8 @@ export default function ProjectRicmaa() {
   const [activeWeight, setActiveWeight] = useState<400 | 500 | 700>(400);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const touchStartX = useRef<number>(0);
 
   // Parallax souris — mockups
@@ -55,6 +67,29 @@ export default function ProjectRicmaa() {
     return () => window.removeEventListener("mousemove", handle);
   }, [mouseX, mouseY]);
 
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 300);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["contexte", "font", "couleurs", "parcours", "design-final"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(`#${entry.target.id}`);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   const goNext = () => { setDirection(1);  setCurrentSlide((p) => (p + 1) % slides.length); };
   const goPrev = () => { setDirection(-1); setCurrentSlide((p) => (p - 1 + slides.length) % slides.length); };
 
@@ -65,15 +100,6 @@ export default function ProjectRicmaa() {
     const diff = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) diff > 0 ? goNext() : goPrev();
   };
-
-  const slides = [
-    { img: ricmaaRic,     label: "Ricmaa",       desc: "Présentation de la marque" },
-    { img: hemshRic,      label: "Hemsh",        desc: "Page partenaire" },
-    { img: minisoRic,     label: "Miniso",       desc: "Page partenaire" },
-    { img: mixoonRic,     label: "Mixoon",       desc: "Page partenaire" },
-    { img: stylekorenRic, label: "Style Koren",  desc: "Page partenaire" },
-    { img: yesstyleRic,   label: "YesStyle",     desc: "Page partenaire" },
-  ];
 
   return (
     <div className="bg-background text-foreground">
@@ -96,20 +122,31 @@ export default function ProjectRicmaa() {
           </Link>
 
           {/* Liens sections */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 ml-auto mr-8">
             {[
-              { label: "Contexte",          href: "#contexte" },
-              { label: "Font",              href: "#font" },
-              { label: "Couleurs",          href: "#couleurs" },
-              { label: "Parcours",          href: "#parcours" },
-              { label: "Design final",      href: "#design-final" },
+              { label: "Contexte",     href: "#contexte" },
+              { label: "Font",         href: "#font" },
+              { label: "Couleurs",     href: "#couleurs" },
+              { label: "Parcours",     href: "#parcours" },
+              { label: "Design final", href: "#design-final" },
             ].map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className={`relative text-sm transition-colors ${
+                  activeSection === item.href
+                    ? "text-white"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {item.label}
+                {activeSection === item.href && (
+                  <motion.span
+                    layoutId="ric-nav-indicator"
+                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-white/60"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
               </a>
             ))}
           </div>
@@ -123,8 +160,8 @@ export default function ProjectRicmaa() {
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        animate={{ opacity: showScrollTop ? 1 : 0, pointerEvents: showScrollTop ? "auto" : "none" }}
+        transition={{ duration: 0.3 }}
         className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-foreground transition-colors"
         aria-label="Remonter en haut"
       >
@@ -132,11 +169,14 @@ export default function ProjectRicmaa() {
       </motion.button>
 
       {/* ── HERO — image plein écran ────────────────────────────────────── */}
-      <section className="relative w-screen h-screen overflow-hidden">
+      <section
+        className="relative w-screen h-screen overflow-hidden"
+        style={{ backgroundImage: `url(${ricmaaBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
         <img
           src={topRic}
           alt="Portfolio Ricmaa Custom"
-          className="w-full h-full object-cover"
+          className="relative z-10 w-full h-full object-contain mx-auto scale-125"
         />
         <div
           className="absolute bottom-0 left-0 w-full h-48 pointer-events-none"
@@ -228,6 +268,7 @@ export default function ProjectRicmaa() {
             className="text-xs uppercase tracking-[0.35em] text-white/25 mb-14"
           >
             01 · Contexte
+
           </motion.p>
 
         {/* fond_ric_insta contenu + ric_insta à gauche + texte à droite */}
@@ -300,6 +341,7 @@ export default function ProjectRicmaa() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-xs uppercase tracking-[0.35em] text-white/25 mb-14"
           >
             02 · Font
@@ -451,28 +493,6 @@ export default function ProjectRicmaa() {
               </motion.div>
             </motion.div>
 
-            {/* Palette
-            <motion.div variants={fadeUp}>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4">Palette couleurs</p>
-              <div className="flex items-center gap-3">
-                {[
-                  { name: "Crème", hex: "#F5EDD8" },
-                  { name: "Rose nude", hex: "#E8BDAC" },
-                  { name: "Bois de rose", hex: "#C4847A" },
-                  { name: "Terracotta", hex: "#A05C52" },
-                  { name: "Charbon", hex: "#1C1C1C" },
-                ].map((color) => (
-                  <div key={color.hex} className="flex flex-col items-center gap-2">
-                    <div
-                      className="w-8 h-8 rounded-full"
-                      style={{ backgroundColor: color.hex }}
-                      title={color.name}
-                    />
-                    <span className="text-[9px] text-white/30 font-mono">{color.hex}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div> */}
           </motion.div>
 
         </motion.div>
@@ -530,10 +550,10 @@ export default function ProjectRicmaa() {
             className="flex flex-col gap-0 border border-white/8 overflow-hidden"
           >
             {[
-              { name: "Blanc",           hex: "#FFFFFF", rgb: "255, 255, 255", cmyk: "0, 0, 0, 0",   hsl: "0°, 0%, 100%",  textDark: true  },
-              { name: "Gris foncé",      hex: "#333333", rgb: "51, 51, 51",   cmyk: "0, 0, 0, 80",  hsl: "0°, 0%, 20%",   textDark: false },
-              { name: "Rose pastel",     hex: "#FDD1DC", rgb: "253, 209, 220", cmyk: "0, 17, 13, 1", hsl: "345°, 91%, 91%", textDark: true  },
-              { name: "Rose framboise",  hex: "#FB85A2", rgb: "251, 133, 162", cmyk: "0, 47, 35, 2", hsl: "345°, 94%, 75%", textDark: true  },
+              { name: "Blanc",           hex: "#FFFFFF", rgb: "255, 255, 255", cmyk: "0, 0, 0, 0",   hsl: "0°, 0%, 100%"  },
+              { name: "Gris foncé",      hex: "#333333", rgb: "51, 51, 51",   cmyk: "0, 0, 0, 80",  hsl: "0°, 0%, 20%"   },
+              { name: "Rose pastel",     hex: "#FDD1DC", rgb: "253, 209, 220", cmyk: "0, 17, 13, 1", hsl: "345°, 91%, 91%" },
+              { name: "Rose framboise",  hex: "#FB85A2", rgb: "251, 133, 162", cmyk: "0, 47, 35, 2", hsl: "345°, 94%, 75%" },
             ].map((color, i) => (
               <motion.div
                 key={color.hex}
