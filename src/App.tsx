@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ProjectRicmaa from "@/pages/ProjectRicmaa";
+import ProjectMontre from "@/pages/montre/ProjectMontre";
 import Loading from "@/components/Loading";
 import GradientOrbs from "@/components/GradientOrbs";
 import CustomCursor from "@/components/CustomCursor";
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/projets/ricmaa" element={<ProjectRicmaa />} />
+      <Route path="/projets/montre" element={<ProjectMontre />} />
       <Route path="*" element={
         <>
           <AnimatePresence mode="wait">
