@@ -29,7 +29,7 @@ export default function DesignFinalRicmaa() {
   }, [mouseX, mouseY]);
 
   return (
-    <section id="design-final" className="w-full px-8 md:px-20 pt-10 pb-16 bg-background">
+    <section id="design-final" className="w-full px-6 md:px-20 pt-10 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -62,7 +62,7 @@ export default function DesignFinalRicmaa() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-3 gap-3 mb-24"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-14 md:mb-24"
         >
           {[
             { src: figmaRic,      alt: "Design final Ricmaa — vue 1" },
@@ -80,7 +80,7 @@ export default function DesignFinalRicmaa() {
         </motion.div>
 
         {/* Mockups — disposition diagonale avec parallax souris */}
-        <div className="relative h-[520px] md:h-[600px]">
+        <div className="relative h-[420px] sm:h-[520px] md:h-[600px]">
 
           {/* Mockup 1 — haut gauche */}
           <motion.div
@@ -89,7 +89,7 @@ export default function DesignFinalRicmaa() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: m1x, y: m1y }}
-            className="absolute top-0 left-0 w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
+            className="absolute top-0 left-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
           >
             <img src={mokup1} alt="Mockup Ricmaa 1" className="w-full object-cover" />
           </motion.div>
@@ -101,7 +101,7 @@ export default function DesignFinalRicmaa() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: m2x, y: m2y }}
-            className="absolute bottom-0 right-0 w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
+            className="absolute bottom-0 right-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
           >
             <img src={mokup2} alt="Mockup Ricmaa 2" className="w-full object-cover" />
           </motion.div>

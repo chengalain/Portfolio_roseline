@@ -21,9 +21,10 @@ function CanvasLoader() {
 
 export default function InteractifMontre() {
   const { language } = useLanguage();
+  const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
 
   return (
-    <section id="interactif" className="w-full px-8 md:px-20 py-24 bg-background">
+    <section id="interactif" className="w-full px-6 md:px-20 py-16 md:py-24 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -55,7 +56,7 @@ export default function InteractifMontre() {
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="w-full rounded-sm overflow-hidden"
-          style={{ height: "70vh" }}
+          style={{ height: isMobile ? "52vh" : "70vh" }}
         >
           <Canvas
             camera={{ position: [0, 0, 4], fov: 45 }}
@@ -74,7 +75,7 @@ export default function InteractifMontre() {
             <OrbitControls
               enableZoom
               enablePan={false}
-              autoRotate
+              autoRotate={!isMobile}
               autoRotateSpeed={1.2}
               minDistance={2}
               maxDistance={8}

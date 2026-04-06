@@ -173,7 +173,50 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      <div ref={wrapperRef} style={{ height: `${count * 100}vh` }}>
+      <div className="mx-auto max-w-6xl px-4 pb-6 md:hidden">
+        <div className="space-y-4">
+          {PROJECTS.map((project, i) => {
+            const href = project.slug ? `/projets/${project.slug}` : project.link;
+            const hasLink = href && href !== "#";
+            const isInternal = !!project.slug;
+
+            const card = (
+              <article className="overflow-hidden rounded-xl border border-border/40 bg-card">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title[language]}
+                    className="h-48 w-full object-cover"
+                  />
+                ) : null}
+                <div className="p-4">
+                  <p className="text-xs font-mono text-muted-foreground/50 mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="text-lg font-semibold mb-2">{project.title[language]}</h3>
+                  <p className="text-sm text-muted-foreground">{project.content[language]}</p>
+                </div>
+              </article>
+            );
+
+            if (!hasLink) return <div key={project.id}>{card}</div>;
+            if (isInternal) {
+              return (
+                <Link key={project.id} to={href} className="block">
+                  {card}
+                </Link>
+              );
+            }
+            return (
+              <a key={project.id} href={href} target="_blank" rel="noopener noreferrer" className="block">
+                {card}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <div ref={wrapperRef} className="hidden md:block" style={{ height: `${count * 100}vh` }}>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             {PROJECTS.map((_, i) => (
