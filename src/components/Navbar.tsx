@@ -64,27 +64,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="flex w-full items-center justify-between px-8 py-4">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
-            <button
-              onClick={() => setLanguage("fr")}
-              className={`text-xs font-medium transition-colors px-1 ${
-                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              FR
-            </button>
-            <span className="text-border text-xs">|</span>
-            <button
-              onClick={() => setLanguage("en")}
-              className={`text-xs font-medium transition-colors px-1 ${
-                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              EN
-            </button>
-          </div>
-
+        <div className="flex items-center">
           <Magnetic strength={0.3}>
             <a href="#" aria-label="Retour en haut">
               <img src="/logo.png" alt="Roseline Cheng" className="h-8 w-auto object-contain" />
@@ -92,7 +72,7 @@ export default function Navbar() {
           </Magnetic>
         </div>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((item) => (
             <Magnetic key={item.link} strength={0.25}>
               <a
@@ -114,6 +94,25 @@ export default function Navbar() {
               </a>
             </Magnetic>
           ))}
+          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+            <button
+              onClick={() => setLanguage("fr")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              FR
+            </button>
+            <span className="text-border text-xs">|</span>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              EN
+            </button>
+          </div>
           <Magnetic strength={0.3}>
             <ThemeToggle />
           </Magnetic>
