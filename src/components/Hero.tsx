@@ -94,7 +94,14 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground/50"
         >
-          Gobelins, l'école de l'image — Paris
+          <a
+            href="https://www.gobelins.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-4 hover:underline"
+          >
+            Gobelins, l'école de l'image — Paris
+          </a>
         </motion.p>
 
         {/* Liens sociaux */}
