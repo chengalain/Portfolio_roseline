@@ -27,7 +27,7 @@ const NAV_SECTIONS = [
 export default function ProjectMontre() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     return setPageMetadata({
@@ -77,7 +77,7 @@ export default function ProjectMontre() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="fixed top-0 z-50 w-full border-b border-foreground/10 bg-background/60 backdrop-blur-lg"
       >
-        <nav className="flex w-full items-center justify-between px-8 py-4">
+        <nav className="flex w-full items-center justify-between px-6 md:px-8 py-4">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -109,7 +109,28 @@ export default function ProjectMontre() {
             ))}
           </div>
 
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+              <button
+                onClick={() => setLanguage("fr")}
+                className={`text-xs font-medium transition-colors px-1 ${
+                  language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                FR
+              </button>
+              <span className="text-border text-xs">|</span>
+              <button
+                onClick={() => setLanguage("en")}
+                className={`text-xs font-medium transition-colors px-1 ${
+                  language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+            <ThemeToggle />
+          </div>
         </nav>
       </motion.header>
 
