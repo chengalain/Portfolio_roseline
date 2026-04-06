@@ -49,7 +49,18 @@ export default function Education() {
                   className="text-foreground leading-snug"
                   style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.2rem, 2vw, 1.5rem)", fontWeight: 700 }}
                 >
-                  {edu.title}
+                  {edu.website ? (
+                    <a
+                      href={edu.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {edu.title}
+                    </a>
+                  ) : (
+                    edu.title
+                  )}
                 </h3>
                 <p className="mt-1 text-sm font-semibold text-accent/80">{edu.degree}</p>
               </div>

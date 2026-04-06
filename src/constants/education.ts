@@ -4,6 +4,7 @@ export interface Education {
   id: string;
   icon: string;
   title: string;
+  website?: string;
   degree: string;
   duration: string;
   content1: string;
@@ -15,6 +16,7 @@ export const EDUCATION_LIST: Education[] = [
     id: "education-1",
     icon: gobelins,
     title: "Gobelins, l'école de l'image — Paris",
+    website: "https://www.gobelins.fr/",
     degree: "DNMADE Graphisme",
     duration: "2025 — 2027 (en cours)",
     content1: "Spécialité : Design Graphique & UX/UI",
