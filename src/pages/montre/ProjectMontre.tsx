@@ -6,10 +6,20 @@ import ThemeToggle from "@/components/ThemeToggle";
 import HeroMontre from "./sections/HeroMontre";
 import ContexteMontre from "./sections/ContexteMontre";
 import CouleurMontre from "./sections/CouleurMontre";
+import ExplicationMontre from "./sections/ExplicationMontre";
+import EclaterMontre from "./sections/EclaterMontre";
+import ModelisationMontre from "./sections/ModelisationMontre";
+import AnimationMontre from "./sections/AnimationMontre";
+import InteractifMontre from "./sections/InteractifMontre";
 
 const NAV_SECTIONS = [
   { label: "Contexte", href: "#contexte" },
-  { label: "Couleur",  href: "#couleur"  },
+  { label: "Couleur",      href: "#couleur"      },
+  { label: "Éclaté",       href: "#eclater"      },
+  { label: "Explication",   href: "#explication"  },
+  { label: "Modélisation",  href: "#modelisation" },
+  { label: "Animation",     href: "#animation"    },
+  { label: "Interactif",    href: "#interactif"   },
 ];
 
 export default function ProjectMontre() {
@@ -101,6 +111,11 @@ export default function ProjectMontre() {
       <HeroMontre />
       <ContexteMontre />
       <CouleurMontre />
+      <EclaterMontre />
+      <ExplicationMontre />
+      <ModelisationMontre />
+      <AnimationMontre />
+      <InteractifMontre />
 
       {/* Footer */}
       <section className="w-full px-8 md:px-20 py-24 border-t border-white/8" style={{ backgroundColor: "#000000" }}>
