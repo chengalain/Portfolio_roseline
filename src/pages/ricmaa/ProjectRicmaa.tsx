@@ -15,6 +15,27 @@ export default function ProjectRicmaa() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+    const previousTitle = document.title;
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    const previousDescription = descriptionMeta?.getAttribute("content") ?? "";
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    const previousCanonical = canonicalLink?.getAttribute("href") ?? "";
+
+    document.title = "Projet Ricmaa Custom — Roseline Cheng";
+    descriptionMeta?.setAttribute(
+      "content",
+      "Étude de cas UX/UI du projet Ricmaa Custom: direction artistique, parcours utilisateur et design final."
+    );
+    canonicalLink?.setAttribute("href", "https://www.roselinecheng.com/projets/ricmaa");
+
+    return () => {
+      document.title = previousTitle;
+      descriptionMeta?.setAttribute("content", previousDescription);
+      canonicalLink?.setAttribute("href", previousCanonical);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);

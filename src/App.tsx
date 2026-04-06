@@ -14,19 +14,21 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
+import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const { pathname } = useLocation();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2400);
+    const timer = setTimeout(() => setLoading(false), prefersReducedMotion ? 0 : 1200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (loading) return;
@@ -45,7 +47,7 @@ export default function App() {
       <Route path="*" element={
         <>
           <AnimatePresence mode="wait">
-            {loading && <Loading key="loading" />}
+            {loading && <Loading key="loading" reduceMotion={prefersReducedMotion} />}
           </AnimatePresence>
 
           {!loading && (
