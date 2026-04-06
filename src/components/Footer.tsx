@@ -29,7 +29,7 @@ export default function Footer() {
 
         <h2 className="section-title">Me contacter</h2>
         <p className="section-subtitle mx-auto mt-3">
-          Je suis disponible pour un stage dès mai 2026 et une alternance dès septembre 2026.
+          Je suis disponible pour une alternance dès septembre 2026.
           N'hésitez pas à me contacter pour toute question ou opportunité.
         </p>
 
