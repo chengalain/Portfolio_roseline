@@ -23,7 +23,7 @@ const FLOATING_IMAGES = [
   { src: montre2, alt: "Montre vue 2", top: "55%", left: "2%",  width: "16%", rotate: 8  },
   { src: montre3, alt: "Montre vue 3", top: "5%",  left: "76%", width: "20%", rotate: 10 },
   { src: montre4, alt: "Montre vue 4", top: "60%", left: "78%", width: "17%", rotate: -7 },
-  { src: montre5, alt: "Montre vue 5", top: "75%", left: "40%", width: "15%", rotate: 5  },
+  { src: montre5, alt: "Montre vue 5", top: "18%", left: "60%", width: "14%", rotate: 4  },
 ];
 
 export default function HeroMontre() {
