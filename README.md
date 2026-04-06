@@ -7,6 +7,8 @@
 - **Styling:** Tailwind CSS 3.4 with CSS custom properties (HSL theming)
 - **Animations:** Framer Motion, Lottie (lottie-react)
 - **Icons:** Lucide React, React Icons
+- **3D:** React Three Fiber, @react-three/drei (GLB model viewer)
+- **Routing:** React Router DOM v6
 - **Deployment:** Vercel
 
 ## Getting Started

@@ -57,7 +57,7 @@ export default function ProjectMontre() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/60 backdrop-blur-lg"
+        className="fixed top-0 z-50 w-full border-b border-foreground/10 bg-background/60 backdrop-blur-lg"
       >
         <nav className="flex w-full items-center justify-between px-8 py-4">
           <Link
@@ -75,7 +75,7 @@ export default function ProjectMontre() {
                 href={item.href}
                 className={`relative text-sm transition-colors ${
                   activeSection === item.href
-                    ? "text-white"
+                    ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -83,7 +83,7 @@ export default function ProjectMontre() {
                 {activeSection === item.href && (
                   <motion.span
                     layoutId="montre-nav-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-white/60"
+                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-foreground/60"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -118,17 +118,17 @@ export default function ProjectMontre() {
       <InteractifMontre />
 
       {/* Footer */}
-      <section className="w-full px-8 md:px-20 py-24 border-t border-white/8" style={{ backgroundColor: "#000000" }}>
+      <section className="w-full px-8 md:px-20 py-24 border-t border-foreground/10 bg-background">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-white/25 mb-3">Montre 3D · 2025</p>
-            <p className="text-white/40 text-sm max-w-sm leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <p className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-3">Montre 3D · 2025</p>
+            <p className="text-foreground/40 text-sm max-w-sm leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
               Projet réalisé en cours — modélisation et animation sur Blender.
             </p>
           </div>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Retour au portfolio

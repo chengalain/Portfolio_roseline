@@ -3,7 +3,7 @@ import montreVideo from "@/assets/images/Projects/blender/animation/montre_video
 
 export default function AnimationMontre() {
   return (
-    <section id="animation" className="w-full px-8 md:px-20 py-24" style={{ backgroundColor: "#000000" }}>
+    <section id="animation" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -11,7 +11,7 @@ export default function AnimationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-white/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
           06 · Animation
         </motion.p>

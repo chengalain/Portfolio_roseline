@@ -29,7 +29,7 @@ export default function EclaterMontre() {
   }, [mouseX, mouseY]);
 
   return (
-    <section id="eclater" className="w-full" style={{ backgroundColor: "#000000" }}>
+    <section id="eclater" className="w-full bg-background">
 
       {/* Image principale + images flottantes par-dessus */}
       <div className="relative w-full">
@@ -40,7 +40,7 @@ export default function EclaterMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-white/25"
+          className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
           style={{ left: "336px" }}
         >
           03 · Éclaté

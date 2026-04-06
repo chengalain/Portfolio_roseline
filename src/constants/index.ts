@@ -1,9 +1,6 @@
 export { SOCIAL_MEDIA } from "./socialMedia";
 export type { SocialLink } from "./socialMedia";
 
-export { SKILLS_LIST } from "./skillsList";
-export type { Skill, SkillGroup } from "./skillsList";
-
 export { EXPERIENCES } from "./experience";
 export type { Experience, Position, TechItem } from "./experience";
 
@@ -14,7 +11,6 @@ export { PROJECTS } from "./projects";
 export type { Project, TechIcon } from "./projects";
 
 export const RESUME_LINK = "/cv_fr.pdf";
-export const REPO_LINK = "https://github.com/acheng-roseline/Portfolio";
 
 export const ABOUT_ME = {
   name: "Roseline Cheng",

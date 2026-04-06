@@ -20,7 +20,7 @@ function CanvasLoader() {
 
 export default function InteractifMontre() {
   return (
-    <section id="interactif" className="w-full px-8 md:px-20 py-24" style={{ backgroundColor: "#000000" }}>
+    <section id="interactif" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -28,7 +28,7 @@ export default function InteractifMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-white/25 mb-4"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
         >
           07 · Interactif
         </motion.p>
@@ -38,7 +38,7 @@ export default function InteractifMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[11px] text-white/25 mb-10 tracking-wide"
+          className="text-[11px] text-foreground/25 mb-10 tracking-wide"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           Clique et fais glisser pour faire tourner la montre
@@ -54,7 +54,7 @@ export default function InteractifMontre() {
         >
           <Canvas
             camera={{ position: [0, 0, 4], fov: 45 }}
-            style={{ background: "#000000", width: "100%", height: "100%" }}
+            style={{ background: "hsl(var(--background))", width: "100%", height: "100%" }}
           >
             <ambientLight intensity={0.6} />
             <directionalLight position={[5, 5, 5]} intensity={1.2} />
