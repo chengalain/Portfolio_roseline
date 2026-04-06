@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "../animations";
 import couleurRic from "@/assets/images/Projects/ricmaa/couleur_ric.png";
+import { useLanguage } from "@/lib/language";
 
 export default function CouleurRicmaa() {
+  const { language } = useLanguage();
+
   return (
     <section id="couleurs" className="w-full px-8 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
@@ -13,7 +16,7 @@ export default function CouleurRicmaa() {
           viewport={{ once: true }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
-          03 · Couleurs
+          {language === "fr" ? "03 · Couleurs" : "03 · Colors"}
         </motion.p>
 
         {/* Image + titre */}
@@ -29,17 +32,19 @@ export default function CouleurRicmaa() {
               className="text-foreground leading-tight mb-4"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700 }}
             >
-              Palette
+              {language === "fr" ? "Palette" : "Palette"}
             </h2>
             <div className="h-px w-10 bg-foreground/15 mb-5" />
             <p className="text-sm text-foreground/45 leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              Une palette construite autour du blanc et du rose — légèreté, féminité et modernité — pour refléter l'univers beauté de Ricmaa.
+              {language === "fr"
+                ? "Une palette construite autour du blanc et du rose — légèreté, féminité et modernité — pour refléter l'univers beauté de Ricmaa."
+                : "A palette built around white and pink — lightness, femininity, and modernity — to reflect Ricmaa's beauty universe."}
             </p>
           </div>
           <div className="overflow-hidden rounded-sm">
             <img
               src={couleurRic}
-              alt="Palette couleurs Ricmaa"
+              alt={language === "fr" ? "Palette couleurs Ricmaa" : "Ricmaa color palette"}
               className="w-full h-full object-cover"
             />
           </div>

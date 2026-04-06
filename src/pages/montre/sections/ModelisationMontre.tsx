@@ -3,6 +3,7 @@ import mokupMontre from "@/assets/images/Projects/blender/modelisation/mokup_exp
 import montreNoir from "@/assets/images/Projects/blender/modelisation/montre_noir.png";
 import montreBlanc from "@/assets/images/Projects/blender/modelisation/montre_blanc.png";
 import montreOrange from "@/assets/images/Projects/blender/modelisation/montre_orange.png";
+import { useLanguage } from "@/lib/language";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -15,6 +16,7 @@ const stagger = {
 };
 
 export default function ModelisationMontre() {
+  const { language } = useLanguage();
   return (
     <section id="modelisation" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
@@ -26,7 +28,7 @@ export default function ModelisationMontre() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
-          05 · Modélisation
+          {language === "fr" ? "05 · Modélisation" : "05 · Modeling"}
         </motion.p>
 
         {/* Mokup pleine largeur */}

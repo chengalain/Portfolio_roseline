@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Mail, ArrowUpRight } from "lucide-react";
-import { SOCIAL_MEDIA, ABOUT_ME, RESUME_LINK } from "@/constants";
+import { SOCIAL_MEDIA, ABOUT_ME, RESUME_LINKS } from "@/constants";
+import { useLanguage } from "@/lib/language";
 import Magnetic from "./Magnetic";
 import profilePic from "@/assets/images/profile.png";
 
 export default function Footer() {
+  const { language } = useLanguage();
   return (
     <section id="contact" className="section-container">
       <motion.div
@@ -27,33 +29,34 @@ export default function Footer() {
           </span>
         </div>
 
-        <h2 className="section-title">Me contacter</h2>
+        <h2 className="section-title">{language === "fr" ? "Me contacter" : "Contact me"}</h2>
         <p className="section-subtitle mx-auto mt-3">
-          Je suis disponible pour une alternance dès septembre 2026.
-          N'hésitez pas à me contacter pour toute question ou opportunité.
+          {language === "fr"
+            ? "Je suis disponible pour une alternance dès septembre 2026. N'hésitez pas à me contacter pour toute question ou opportunité."
+            : "I am available for an apprenticeship starting in September 2026. Feel free to contact me for any question or opportunity."}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Magnetic strength={0.2}>
             <a
               href={`mailto:${ABOUT_ME.email}`}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5
-                         text-sm font-medium text-accent-foreground transition-all
-                         hover:opacity-90 hover:shadow-lg hover:shadow-accent/20"
+               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5
+                          text-sm font-medium text-accent-foreground transition-all
+                          hover:opacity-90 hover:shadow-lg hover:shadow-accent/20"
             >
               <Mail className="h-4 w-4" />
-              Envoyer un message
+              {language === "fr" ? "Envoyer un message" : "Send a message"}
             </a>
           </Magnetic>
           <Magnetic strength={0.2}>
             <a
-              href={RESUME_LINK}
+              href={RESUME_LINKS[language]}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border
                          bg-card/50 px-6 py-2.5 text-sm font-medium transition-all hover:bg-muted"
             >
-              Mon CV
+              {language === "fr" ? "Mon CV" : "My Resume"}
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </Magnetic>

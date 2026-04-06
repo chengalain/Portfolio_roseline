@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/constants";
+import { useLanguage } from "@/lib/language";
 import ThemeToggle from "./ThemeToggle";
 import Magnetic from "./Magnetic";
 
@@ -9,6 +10,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -63,11 +65,24 @@ export default function Navbar() {
     >
       <nav className="flex w-full items-center justify-between px-8 py-4">
         <div className="flex items-center gap-4">
-          {/* Toggle FR / EN — à implémenter */}
           <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
-            <button className="text-xs font-medium text-foreground transition-colors px-1">FR</button>
+            <button
+              onClick={() => setLanguage("fr")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              FR
+            </button>
             <span className="text-border text-xs">|</span>
-            <button className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors px-1">EN</button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              EN
+            </button>
           </div>
 
           <Magnetic strength={0.3}>
@@ -88,7 +103,7 @@ export default function Navbar() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {item.title}
+                {item.title[language]}
                 {activeSection === item.link && (
                   <motion.span
                     layoutId="nav-indicator"
@@ -106,9 +121,23 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3 md:hidden">
           <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
-            <button className="text-xs font-medium text-foreground px-1">FR</button>
+            <button
+              onClick={() => setLanguage("fr")}
+              className={`text-xs font-medium px-1 ${
+                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              FR
+            </button>
             <span className="text-border text-xs">|</span>
-            <button className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors px-1">EN</button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              EN
+            </button>
           </div>
           <ThemeToggle />
           <button
@@ -147,7 +176,7 @@ export default function Navbar() {
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
-                  {item.title}
+                  {item.title[language]}
                 </a>
               ))}
             </div>

@@ -1,11 +1,13 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, FileText } from "lucide-react";
-import { ABOUT_ME, SOCIAL_MEDIA, RESUME_LINK } from "@/constants";
+import { ABOUT_ME, SOCIAL_MEDIA, RESUME_LINKS } from "@/constants";
+import { useLanguage } from "@/lib/language";
 import Magnetic from "./Magnetic";
 import profile from "@/assets/images/profile.png";
 import { useEffect } from "react";
 
 export default function Hero() {
+  const { language } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -44,7 +46,9 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
           </span>
-          Disponible — Alternance sept. 2026
+          {language === "fr"
+            ? "Disponible — Alternance sept. 2026"
+            : "Available — Apprenticeship from Sep 2026"}
         </motion.div>
 
         {/* Nom */}
@@ -84,7 +88,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.55 }}
           className="text-xs uppercase tracking-[0.25em] text-muted-foreground"
         >
-          Design Graphique · UX/UI · Motion Design
+          {language === "fr"
+            ? "Design Graphique · UX/UI · Motion Design"
+            : "Graphic Design · UX/UI · Motion Design"}
         </motion.p>
 
         {/* Gobelins */}
@@ -130,7 +136,7 @@ export default function Hero() {
 
           <Magnetic strength={0.2}>
             <a
-              href={RESUME_LINK}
+              href={RESUME_LINKS[language]}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border
@@ -138,7 +144,7 @@ export default function Hero() {
                          transition-all hover:bg-muted ml-1"
             >
               <FileText className="h-3.5 w-3.5" />
-              Mon CV
+              {language === "fr" ? "Mon CV" : "My Resume"}
             </a>
           </Magnetic>
         </motion.div>
@@ -146,7 +152,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <motion.a
           href="#experience"
-          aria-label="Défiler vers l'expérience"
+          aria-label={language === "fr" ? "Défiler vers l'expérience" : "Scroll to experience"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}

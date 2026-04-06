@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import montreVideo from "@/assets/images/Projects/blender/animation/montre_video.mp4";
+import { useLanguage } from "@/lib/language";
 
 export default function AnimationMontre() {
+  const { language } = useLanguage();
   return (
     <section id="animation" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
@@ -13,7 +15,7 @@ export default function AnimationMontre() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
-          06 · Animation
+          {language === "fr" ? "06 · Animation" : "06 · Animation"}
         </motion.p>
 
         <motion.div

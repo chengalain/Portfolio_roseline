@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import montreFond from "@/assets/images/Projects/blender/context/montre_fond.png";
 import montreDeFace from "@/assets/images/Projects/blender/context/montre_de_face.png";
+import { useLanguage } from "@/lib/language";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -13,6 +14,8 @@ const stagger = {
 };
 
 export default function ContexteMontre() {
+  const { language } = useLanguage();
+
   return (
     <section id="contexte" className="w-full bg-background">
 
@@ -23,7 +26,7 @@ export default function ContexteMontre() {
         transition={{ duration: 0.5 }}
         className="text-xs uppercase tracking-[0.35em] text-foreground/25 px-8 md:px-[336px] pt-10 mb-14"
       >
-        01 · Contexte
+        {language === "fr" ? "01 · Contexte" : "01 · Context"}
       </motion.p>
 
       {/* Carte pleine largeur */}
@@ -71,8 +74,8 @@ export default function ContexteMontre() {
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 700,
             }}
-          >
-            Explication du contexte
+            >
+            {language === "fr" ? "Explication du contexte" : "Context explanation"}
           </motion.h2>
 
           <motion.div variants={fadeUp} className="h-px w-10 text-foreground/30 mb-6" />
@@ -82,8 +85,9 @@ export default function ContexteMontre() {
             className="text-foreground/75 text-sm leading-relaxed mb-4"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            Projet réalisé en novembre 2025 lors de mes premières séances sur Blender avec Henri
-            Arbezier. L'objectif était de se familiariser avec la modélisation 3D à travers un objet en éclaté.
+            {language === "fr"
+              ? "Projet réalisé en novembre 2025 lors de mes premières séances sur Blender avec Henri Arbezier. L'objectif était de se familiariser avec la modélisation 3D à travers un objet en éclaté."
+              : "Project completed in November 2025 during my first Blender sessions with Henri Arbezier. The goal was to get familiar with 3D modeling through an exploded object study."}
           </motion.p>
 
           <motion.p
@@ -91,9 +95,9 @@ export default function ContexteMontre() {
             className="text-foreground/55 text-sm leading-relaxed"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            J'ai choisi une montre Cartier et en quelques jours, j'ai modélisé, animé, coloré et texturé
-            l'ensemble, apprenant à gérer tous les aspects du workflow 3D et montrant ma progression
-            rapide sur Blender.
+            {language === "fr"
+              ? "J'ai choisi une montre Cartier et en quelques jours, j'ai modélisé, animé, coloré et texturé l'ensemble, apprenant à gérer tous les aspects du workflow 3D et montrant ma progression rapide sur Blender."
+              : "I chose a Cartier-inspired watch and, in just a few days, modeled, animated, colored, and textured it, learning every part of the 3D workflow and showing rapid progress in Blender."}
           </motion.p>
         </motion.div>
 

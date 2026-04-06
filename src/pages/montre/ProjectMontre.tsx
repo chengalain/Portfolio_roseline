@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/language";
+import { setPageMetadata } from "@/lib/seo";
 import ThemeToggle from "@/components/ThemeToggle";
 import HeroMontre from "./sections/HeroMontre";
 import ContexteMontre from "./sections/ContexteMontre";
@@ -13,39 +15,34 @@ import AnimationMontre from "./sections/AnimationMontre";
 import InteractifMontre from "./sections/InteractifMontre";
 
 const NAV_SECTIONS = [
-  { label: "Contexte", href: "#contexte" },
-  { label: "Couleur",      href: "#couleur"      },
-  { label: "Éclaté",       href: "#eclater"      },
-  { label: "Explication",   href: "#explication"  },
-  { label: "Modélisation",  href: "#modelisation" },
-  { label: "Animation",     href: "#animation"    },
-  { label: "Interactif",    href: "#interactif"   },
-];
+  { label: { fr: "Contexte", en: "Context" }, href: "#contexte" },
+  { label: { fr: "Couleur", en: "Color" }, href: "#couleur" },
+  { label: { fr: "Éclaté", en: "Exploded view" }, href: "#eclater" },
+  { label: { fr: "Explication", en: "Explanation" }, href: "#explication" },
+  { label: { fr: "Modélisation", en: "Modeling" }, href: "#modelisation" },
+  { label: { fr: "Animation", en: "Animation" }, href: "#animation" },
+  { label: { fr: "Interactif", en: "Interactive" }, href: "#interactif" },
+] as const;
 
 export default function ProjectMontre() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { language } = useLanguage();
 
   useEffect(() => {
-    const previousTitle = document.title;
-    const descriptionMeta = document.querySelector('meta[name="description"]');
-    const previousDescription = descriptionMeta?.getAttribute("content") ?? "";
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    const previousCanonical = canonicalLink?.getAttribute("href") ?? "";
-
-    document.title = "Projet Montre 3D — Roseline Cheng";
-    descriptionMeta?.setAttribute(
-      "content",
-      "Étude de cas de modélisation et animation 3D d'une montre sous Blender, du concept à l'expérience interactive."
-    );
-    canonicalLink?.setAttribute("href", "https://www.roselinecheng.com/projets/montre");
-
-    return () => {
-      document.title = previousTitle;
-      descriptionMeta?.setAttribute("content", previousDescription);
-      canonicalLink?.setAttribute("href", previousCanonical);
-    };
-  }, []);
+    return setPageMetadata({
+      title:
+        language === "fr"
+          ? "Projet Montre 3D — Roseline Cheng"
+          : "3D Watch Project — Roseline Cheng",
+      description:
+        language === "fr"
+          ? "Étude de cas de modélisation et animation 3D d'une montre sous Blender, du concept à l'expérience interactive."
+          : "Case study of 3D watch modeling and animation in Blender, from concept to interactive experience.",
+      canonical: "https://www.roselinecheng.com/projets/montre",
+      ogLocale: language === "fr" ? "fr_FR" : "en_US",
+    });
+  }, [language]);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
@@ -86,7 +83,7 @@ export default function ProjectMontre() {
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Accueil
+            {language === "fr" ? "Accueil" : "Home"}
           </Link>
 
           <div className="hidden md:flex items-center gap-6 ml-auto mr-8">
@@ -100,7 +97,7 @@ export default function ProjectMontre() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {item.label}
+                {item.label[language]}
                 {activeSection === item.href && (
                   <motion.span
                     layoutId="montre-nav-indicator"
@@ -123,7 +120,7 @@ export default function ProjectMontre() {
         animate={{ opacity: showScrollTop ? 1 : 0, pointerEvents: showScrollTop ? "auto" : "none" }}
         transition={{ duration: 0.3 }}
         className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-foreground transition-colors"
-        aria-label="Remonter en haut"
+        aria-label={language === "fr" ? "Remonter en haut" : "Back to top"}
       >
         <ArrowUp className="h-4 w-4" />
       </motion.button>
@@ -144,7 +141,9 @@ export default function ProjectMontre() {
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-3">Montre 3D · 2025</p>
             <p className="text-foreground/40 text-sm max-w-sm leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              Projet réalisé en cours — modélisation et animation sur Blender.
+              {language === "fr"
+                ? "Projet réalisé en cours — modélisation et animation sur Blender."
+                : "Project created in class — modeling and animation in Blender."}
             </p>
           </div>
           <Link
@@ -152,7 +151,7 @@ export default function ProjectMontre() {
             className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            Retour au portfolio
+            {language === "fr" ? "Retour au portfolio" : "Back to portfolio"}
           </Link>
         </div>
       </section>

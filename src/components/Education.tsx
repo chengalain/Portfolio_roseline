@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { EDUCATION_LIST } from "@/constants";
+import { useLanguage } from "@/lib/language";
 
 export default function Education() {
+  const { language } = useLanguage();
   return (
     <section id="education" className="section-container">
       <motion.div
@@ -11,12 +13,14 @@ export default function Education() {
         transition={{ duration: 0.5 }}
         className="mb-16"
       >
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Parcours académique</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
+          {language === "fr" ? "Parcours académique" : "Academic background"}
+        </p>
         <h2
           className="leading-none text-foreground"
           style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700 }}
         >
-          Formation
+          {language === "fr" ? "Formation" : "Education"}
         </h2>
       </motion.div>
 
@@ -33,7 +37,7 @@ export default function Education() {
             {/* Colonne 1 — Date + logo */}
             <div className="flex items-center gap-4">
               <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                {edu.duration}
+                {edu.duration[language]}
               </span>
             </div>
 
@@ -41,7 +45,7 @@ export default function Education() {
             <div className="flex items-start gap-4">
               {edu.icon && (
                 <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-muted flex items-center justify-center mt-1">
-                  <img src={edu.icon} alt={edu.title} className="h-7 w-7 object-contain" />
+                  <img src={edu.icon} alt={edu.title[language]} className="h-7 w-7 object-contain" />
                 </div>
               )}
               <div>
@@ -56,20 +60,20 @@ export default function Education() {
                       rel="noopener noreferrer"
                       className="underline-offset-4 hover:underline"
                     >
-                      {edu.title}
+                      {edu.title[language]}
                     </a>
                   ) : (
-                    edu.title
+                    edu.title[language]
                   )}
                 </h3>
-                <p className="mt-1 text-sm font-semibold text-accent/80">{edu.degree}</p>
+                <p className="mt-1 text-sm font-semibold text-accent/80">{edu.degree[language]}</p>
               </div>
             </div>
 
             {/* Colonne 3 — Détails */}
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground leading-relaxed">{edu.content1}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{edu.content2}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{edu.content1[language]}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{edu.content2[language]}</p>
             </div>
           </motion.div>
         ))}

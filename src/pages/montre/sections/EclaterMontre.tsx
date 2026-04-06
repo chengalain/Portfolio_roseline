@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import eclaterMontre from "@/assets/images/Projects/blender/eclater/eclater_montre.png";
 import eclaterMontre1 from "@/assets/images/Projects/blender/eclater/eclater_montre1.png";
 import partieMontre from "@/assets/images/Projects/blender/eclater/partie_montre.png";
+import { useLanguage } from "@/lib/language";
 
 export default function EclaterMontre() {
+  const { language } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -43,7 +45,7 @@ export default function EclaterMontre() {
           className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
           style={{ left: "336px" }}
         >
-          03 · Éclaté
+          {language === "fr" ? "03 · Éclaté" : "03 · Exploded view"}
         </motion.p>
 
         <motion.img

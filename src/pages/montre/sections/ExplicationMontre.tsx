@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import montreSignification from "@/assets/images/Projects/blender/explication/montre__signification.png";
+import { useLanguage } from "@/lib/language";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -12,6 +13,8 @@ const stagger = {
 };
 
 export default function ExplicationMontre() {
+  const { language } = useLanguage();
+
   return (
     <section id="explication" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
@@ -23,7 +26,7 @@ export default function ExplicationMontre() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
-          04 · Explication
+          {language === "fr" ? "04 · Explication" : "04 · Explanation"}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -44,8 +47,17 @@ export default function ExplicationMontre() {
                 fontWeight: 700,
               }}
             >
-              Choix
-              <br />de la montre
+              {language === "fr" ? (
+                <>
+                  Choix
+                  <br />de la montre
+                </>
+              ) : (
+                <>
+                  Watch
+                  <br />selection
+                </>
+              )}
             </motion.h2>
 
             <motion.div variants={fadeUp} className="h-px w-10 bg-foreground/25 mb-8" />
@@ -55,9 +67,9 @@ export default function ExplicationMontre() {
               className="text-foreground/75 text-sm leading-relaxed mb-6"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              J'ai choisi de modéliser une montre inspirée de Cartier pour travailler sur un objet
-              à la fois technique et élégant. Ce modèle m'a permis d'explorer la précision des formes,
-              la symétrie du cadran et le réalisme des matériaux comme le métal et le verre.
+              {language === "fr"
+                ? "J'ai choisi de modéliser une montre inspirée de Cartier pour travailler sur un objet à la fois technique et élégant. Ce modèle m'a permis d'explorer la précision des formes, la symétrie du cadran et le réalisme des matériaux comme le métal et le verre."
+                : "I chose to model a Cartier-inspired watch to work on an object that is both technical and elegant. This model allowed me to explore shape precision, dial symmetry, and realistic materials like metal and glass."}
             </motion.p>
 
             <motion.p
@@ -65,9 +77,9 @@ export default function ExplicationMontre() {
               className="text-foreground/50 text-sm leading-relaxed"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              À travers ce projet, j'ai appris à structurer une modélisation complexe, à gérer
-              les proportions avec rigueur et à utiliser l'éclairage pour mettre en valeur
-              les volumes et les détails.
+              {language === "fr"
+                ? "À travers ce projet, j'ai appris à structurer une modélisation complexe, à gérer les proportions avec rigueur et à utiliser l'éclairage pour mettre en valeur les volumes et les détails."
+                : "Through this project, I learned how to structure complex modeling, manage proportions with precision, and use lighting to highlight volumes and details."}
             </motion.p>
           </motion.div>
 

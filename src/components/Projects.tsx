@@ -4,6 +4,7 @@ import type { MotionValue } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "@/constants";
+import { useLanguage } from "@/lib/language";
 
 type Project = (typeof PROJECTS)[0];
 
@@ -12,11 +13,13 @@ function ProjectCard({
   index,
   scrollProgress,
   isActive,
+  language,
 }: {
   project: Project;
   index: number;
   scrollProgress: MotionValue<number>;
   isActive: boolean;
+  language: "fr" | "en";
 }) {
   const x = useTransform(scrollProgress, (v) => `${(index - v) * 58}%`);
   const scale = useTransform(scrollProgress, (v) =>
@@ -39,12 +42,11 @@ function ProjectCard({
 
   const content = (
     <div className="group w-full h-full flex">
-      {/* Image */}
       <div className={`w-[58%] flex-shrink-0 overflow-hidden bg-muted ${fit === "contain" ? "flex items-center justify-center p-8" : ""}`}>
         {project.image ? (
           <img
             src={project.image}
-            alt={project.title}
+            alt={project.title[language]}
             className={`w-full h-full transition-all duration-700 brightness-90 ${isActive ? "group-hover:brightness-105 group-hover:scale-[1.03]" : ""} ${
               fit === "contain" ? "object-contain max-h-full" : "object-cover"
             }`}
@@ -54,7 +56,6 @@ function ProjectCard({
         )}
       </div>
 
-      {/* Texte */}
       <div className="flex-1 bg-card p-8 md:p-10 flex flex-col justify-between">
         <div>
           <span className="text-xs font-mono text-muted-foreground/30 mb-4 block">
@@ -64,10 +65,10 @@ function ProjectCard({
             className="text-foreground leading-snug mb-4"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1rem, 1.8vw, 1.6rem)", fontWeight: 700 }}
           >
-            {project.title}
+            {project.title[language]}
           </h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            {project.content}
+            {project.content[language]}
           </p>
         </div>
 
@@ -82,7 +83,7 @@ function ProjectCard({
           </div>
           {hasLink && isActive && (
             <div className="flex-shrink-0 ml-3 flex items-center gap-1 text-[11px] text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-              <span>Voir</span>
+              <span>{language === "fr" ? "Voir" : "View"}</span>
               <ArrowUpRight className="h-3 w-3" />
             </div>
           )}
@@ -121,6 +122,7 @@ export default function Projects() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const count = PROJECTS.length;
+  const { language } = useLanguage();
 
   const rawProgress = useMotionValue(0);
   const scrollProgress = useSpring(rawProgress, { stiffness: 90, damping: 22, mass: 0.6 });
@@ -152,8 +154,6 @@ export default function Projects() {
 
   return (
     <section id="projects">
-
-      {/* Header */}
       <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -161,21 +161,20 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Créations</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
+            {language === "fr" ? "Créations" : "Creations"}
+          </p>
           <h2
             className="leading-none text-foreground"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700 }}
           >
-            Projets
+            {language === "fr" ? "Projets" : "Projects"}
           </h2>
         </motion.div>
       </div>
 
-      {/* Wrapper scroll */}
       <div ref={wrapperRef} style={{ height: `${count * 100}vh` }}>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-
-          {/* Indicateurs */}
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             {PROJECTS.map((_, i) => (
               <div
@@ -187,7 +186,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Carrousel */}
           <div className="relative w-full h-[68vh] flex items-center justify-center">
             {PROJECTS.map((project, i) => (
               <ProjectCard
@@ -196,11 +194,11 @@ export default function Projects() {
                 index={i}
                 scrollProgress={scrollProgress}
                 isActive={i === activeIndex}
+                language={language}
               />
             ))}
           </div>
 
-          {/* Zones cliquables gauche / droite */}
           {activeIndex > 0 && (
             <div
               onClick={() => scrollToProject(activeIndex - 1)}
@@ -216,17 +214,21 @@ export default function Projects() {
             />
           )}
 
-          {/* Hint */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
             <motion.p
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 2, repeat: Infinity }}
               className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50"
             >
-              {activeIndex < count - 1 ? "Scroller pour continuer" : "Scroller pour quitter"}
+              {activeIndex < count - 1
+                ? language === "fr"
+                  ? "Scroller pour continuer"
+                  : "Scroll to continue"
+                : language === "fr"
+                  ? "Scroller pour quitter"
+                  : "Scroll to exit"}
             </motion.p>
           </div>
-
         </div>
       </div>
     </section>
