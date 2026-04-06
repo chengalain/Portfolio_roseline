@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 
 const LINK_SELECTORS =
   "a, button, [data-cursor-hover]";
@@ -8,6 +9,7 @@ export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -53,7 +55,7 @@ export default function CustomCursor() {
     };
   }, [onMouseMove]);
 
-  if (isTouchDevice) return null;
+  if (isTouchDevice || prefersReducedMotion) return null;
 
   return (
     <>

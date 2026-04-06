@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sudhanvanadiger.vercel.app/sitemap.xml
+Sitemap: https://www.roselinecheng.com/sitemap.xml

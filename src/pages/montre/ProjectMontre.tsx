@@ -27,6 +27,27 @@ export default function ProjectMontre() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
+    const previousTitle = document.title;
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    const previousDescription = descriptionMeta?.getAttribute("content") ?? "";
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    const previousCanonical = canonicalLink?.getAttribute("href") ?? "";
+
+    document.title = "Projet Montre 3D — Roseline Cheng";
+    descriptionMeta?.setAttribute(
+      "content",
+      "Étude de cas de modélisation et animation 3D d'une montre sous Blender, du concept à l'expérience interactive."
+    );
+    canonicalLink?.setAttribute("href", "https://www.roselinecheng.com/projets/montre");
+
+    return () => {
+      document.title = previousTitle;
+      descriptionMeta?.setAttribute("content", previousDescription);
+      canonicalLink?.setAttribute("href", previousCanonical);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
