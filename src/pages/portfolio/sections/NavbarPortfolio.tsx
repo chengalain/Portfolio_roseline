@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/language";
 
 export default function NavbarPortfolio() {
   const [activeSection, setActiveSection] = useState("");
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const ids = ["figma", "site"];
@@ -70,7 +70,28 @@ export default function NavbarPortfolio() {
           ))}
         </div>
 
-        <ThemeToggle />
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+            <button
+              onClick={() => setLanguage("fr")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              FR
+            </button>
+            <span className="text-border text-xs">|</span>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`text-xs font-medium transition-colors px-1 ${
+                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              EN
+            </button>
+          </div>
+          <ThemeToggle />
+        </div>
       </nav>
     </motion.header>
   );
