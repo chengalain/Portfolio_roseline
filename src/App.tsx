@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ProjectRicmaa from "@/pages/ProjectRicmaa";
 import ProjectMontre from "@/pages/montre/ProjectMontre";
@@ -17,6 +17,11 @@ import Footer from "@/components/Footer";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2400);
