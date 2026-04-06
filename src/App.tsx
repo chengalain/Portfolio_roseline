@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ProjectRicmaa from "@/pages/ricmaa/ProjectRicmaa";
 import ProjectMontre from "@/pages/montre/ProjectMontre";
+import ProjectPortfolio from "@/pages/portfolio/ProjectPortfolio";
 import Loading from "@/components/Loading";
 import GradientOrbs from "@/components/GradientOrbs";
 import CustomCursor from "@/components/CustomCursor";
@@ -63,6 +64,7 @@ export default function App() {
     <Routes>
       <Route path="/projets/ricmaa" element={<ProjectRicmaa />} />
       <Route path="/projets/montre" element={<ProjectMontre />} />
+      <Route path="/projets/portfolio" element={<ProjectPortfolio />} />
       <Route path="*" element={
         <>
           <AnimatePresence mode="wait">

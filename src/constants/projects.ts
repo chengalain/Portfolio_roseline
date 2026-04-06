@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
     id: "project-1",
     title: { fr: "Portfolio Personnel", en: "Personal Portfolio" },
     github: "#",
-    link: "https://www.figma.com/design/21fJzzYHn6DC2oUZtdOsES/portfolio?node-id=0-1&p=f",
+    slug: "portfolio",
     image: "/logo.png",
     imageFit: "contain",
     content: {
