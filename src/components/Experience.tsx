@@ -48,9 +48,43 @@ export default function Experience() {
         </motion.div>
       </div>
 
+      <div className="mx-auto max-w-6xl px-4 pb-6 md:hidden">
+        <div className="space-y-4">
+          {EXPERIENCES.map((expItem, i) => {
+            const pos = expItem.positions[0];
+            return (
+              <article
+                key={i}
+                className="rounded-2xl border border-border/50 bg-card p-5"
+              >
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-muted flex items-center justify-center">
+                    <img src={expItem.logo} alt={expItem.organisation[language]} className="h-7 w-7 object-contain" />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                      {pos.duration[language]}
+                    </p>
+                    <h3 className="text-base font-semibold">{expItem.organisation[language]}</h3>
+                  </div>
+                </div>
+                <p className="text-sm font-medium text-foreground/85 mb-3">{pos.title[language]}</p>
+                <ul className="space-y-2">
+                  {pos.content?.map((c, cIdx) => (
+                    <li key={cIdx} className="text-sm text-muted-foreground leading-relaxed">
+                      • {c.text[language]}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Sticky scroll wrapper */}
-      <div ref={wrapperRef} style={{ height: `${count * 100}vh` }}>
-        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden px-8 md:px-64">
+      <div ref={wrapperRef} className="hidden md:block" style={{ height: `${count * 100}vh` }}>
+        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden px-8 lg:px-24 xl:px-40">
 
           {/* Indicateurs verticaux */}
           <div className="absolute left-4 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-3">

@@ -10,7 +10,7 @@ export default function FontRicmaa() {
   const { language } = useLanguage();
 
   return (
-    <section id="font" className="w-full px-8 md:px-20 pb-16 bg-background">
+    <section id="font" className="w-full px-6 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
@@ -51,7 +51,7 @@ export default function FontRicmaa() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="relative z-10 flex flex-col justify-center px-12 py-8 w-full md:max-w-[62%]"
+            className="relative z-10 flex flex-col justify-center px-5 sm:px-8 md:px-12 py-8 w-full md:max-w-[62%]"
           >
             <motion.h2
               variants={fadeUp}
@@ -81,7 +81,7 @@ export default function FontRicmaa() {
               <div className="h-px bg-foreground/10" />
 
               {/* Grand Aa + colonnes */}
-              <div className="flex items-stretch gap-6">
+              <div className="flex flex-col md:flex-row items-stretch gap-6">
 
                 {/* Grand Aa — pleine hauteur */}
                 <motion.div
@@ -89,17 +89,17 @@ export default function FontRicmaa() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.25 }}
-                  className="text-foreground/80 select-none flex-shrink-0 flex items-center border-r border-foreground/10 pr-6"
-                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: activeWeight, fontSize: "8rem", lineHeight: 1 }}
+                  className="text-foreground/80 select-none flex-shrink-0 flex items-center md:border-r border-foreground/10 md:pr-6"
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: activeWeight, fontSize: "clamp(4rem, 18vw, 8rem)", lineHeight: 1 }}
                 >
                   Aa
                 </motion.div>
 
                 {/* Weights + Overview */}
-                <div className="flex gap-6 flex-1 py-6">
+                <div className="flex flex-col sm:flex-row gap-6 flex-1 py-6">
 
                   {/* Weights */}
-                  <div className="flex flex-col gap-2 border-r border-foreground/10 pr-6">
+                  <div className="flex flex-col gap-2 sm:border-r border-foreground/10 sm:pr-6">
                     <p className="text-[9px] uppercase tracking-[0.3em] text-foreground/30 mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>Weights</p>
                     {([
                       { weight: 400, label: "Regular" },
@@ -120,7 +120,7 @@ export default function FontRicmaa() {
                   </div>
 
                   {/* Overview */}
-                  <div className="flex flex-col gap-1 flex-1 justify-center">
+                  <div className="flex flex-col gap-1 flex-1 justify-center min-w-0">
                     <p className="text-[9px] uppercase tracking-[0.3em] text-foreground/30 mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Overview</p>
                     <motion.p
                       key={activeWeight}
@@ -165,7 +165,7 @@ export default function FontRicmaa() {
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                className="mt-3 flex ml-[240px]"
+                className="mt-3 flex justify-center md:justify-start md:ml-[240px]"
               >
                 <ArrowUp className="h-4 w-4 text-foreground/25" />
               </motion.div>

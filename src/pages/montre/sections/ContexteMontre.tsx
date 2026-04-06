@@ -24,7 +24,7 @@ export default function ContexteMontre() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-xs uppercase tracking-[0.35em] text-foreground/25 px-8 md:px-[336px] pt-10 mb-14"
+        className="text-xs uppercase tracking-[0.35em] text-foreground/25 px-6 md:px-16 lg:px-[336px] pt-10 mb-10 md:mb-14"
       >
         {language === "fr" ? "01 · Contexte" : "01 · Context"}
       </motion.p>
@@ -54,7 +54,7 @@ export default function ContexteMontre() {
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="absolute bottom-0 object-contain drop-shadow-2xl"
-          style={{ width: "clamp(320px, 44vw, 640px)", right: "calc(10rem)" }}
+          style={{ width: "clamp(160px, 35vw, 640px)", right: "clamp(1rem, 8vw, 10rem)" }}
         />
 
         {/* Texte — bas gauche */}
@@ -63,8 +63,8 @@ export default function ContexteMontre() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="absolute bottom-52 left-12 md:left-80 z-10"
-          style={{ maxWidth: "calc(56vw - 18rem)" }}
+          className="absolute bottom-8 left-6 md:bottom-24 md:left-16 lg:left-80 z-10 pr-6"
+          style={{ maxWidth: "min(92vw, 34rem)" }}
         >
           <motion.h2
             variants={fadeUp}

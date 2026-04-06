@@ -42,8 +42,7 @@ export default function EclaterMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
-          style={{ left: "336px" }}
+          className="absolute top-6 left-6 md:top-10 md:left-16 lg:left-[336px] z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
         >
           {language === "fr" ? "03 · Éclaté" : "03 · Exploded view"}
         </motion.p>
@@ -67,7 +66,7 @@ export default function EclaterMontre() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ x: leftX, y: leftY }}
-          className="absolute left-[12%] top-[20%] w-[22%] object-contain drop-shadow-2xl"
+          className="absolute left-[12%] top-[20%] w-[22%] object-contain drop-shadow-2xl hidden md:block"
         />
 
         {/* Droite — par-dessus */}
@@ -79,7 +78,7 @@ export default function EclaterMontre() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           style={{ x: rightX, y: rightY }}
-          className="absolute right-[12%] top-[15%] w-[22%] object-contain drop-shadow-2xl"
+          className="absolute right-[12%] top-[15%] w-[22%] object-contain drop-shadow-2xl hidden md:block"
         />
 
       </div>
