@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, ContactShadows } from "@react-three/drei";
+import { useLanguage } from "@/lib/language";
 // @ts-ignore
 import modelUrl from "@/assets/images/Projects/blender/interactif/roseline cheng.glb?url";
 
@@ -19,6 +20,8 @@ function CanvasLoader() {
 }
 
 export default function InteractifMontre() {
+  const { language } = useLanguage();
+
   return (
     <section id="interactif" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
@@ -30,7 +33,7 @@ export default function InteractifMontre() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
         >
-          07 · Interactif
+          {language === "fr" ? "07 · Interactif" : "07 · Interactive"}
         </motion.p>
 
         <motion.p
@@ -41,7 +44,9 @@ export default function InteractifMontre() {
           className="text-[11px] text-foreground/25 mb-10 tracking-wide"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Clique et fais glisser pour faire tourner la montre
+          {language === "fr"
+            ? "Clique et fais glisser pour faire tourner la montre"
+            : "Click and drag to rotate the watch"}
         </motion.p>
 
         <motion.div

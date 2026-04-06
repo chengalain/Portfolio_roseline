@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { fadeUp, stagger } from "../animations";
+import { useLanguage } from "@/lib/language";
 import figmaRic from "@/assets/images/Projects/ricmaa/design_final/figma_ric.png";
 import figmaRicmaa22 from "@/assets/images/Projects/ricmaa/design_final/figma_ricmaa22.png";
 import figmaaRic3 from "@/assets/images/Projects/ricmaa/design_final/figmaa_ric3.png";
@@ -8,6 +9,7 @@ import mokup1 from "@/assets/images/Projects/ricmaa/design_final/mokup1.png";
 import mokup2 from "@/assets/images/Projects/ricmaa/design_final/mokup2.png";
 
 export default function DesignFinalRicmaa() {
+  const { language } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -36,7 +38,7 @@ export default function DesignFinalRicmaa() {
           viewport={{ once: true }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
         >
-          05 · Design final
+          {language === "fr" ? "05 · Design final" : "05 · Final design"}
         </motion.p>
 
         <motion.h2
@@ -47,7 +49,11 @@ export default function DesignFinalRicmaa() {
           className="text-foreground leading-tight mb-16"
           style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700 }}
         >
-          Résultat <span className="text-foreground/30">sur Figma</span>
+          {language === "fr" ? (
+            <>Résultat <span className="text-foreground/30">sur Figma</span></>
+          ) : (
+            <>Result <span className="text-foreground/30">in Figma</span></>
+          )}
         </motion.h2>
 
         {/* 3 images Figma sur une ligne */}

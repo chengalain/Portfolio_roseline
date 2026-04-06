@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import montreCouleur from "@/assets/images/Projects/blender/couleur/montre_couleur.png";
+import { useLanguage } from "@/lib/language";
 
 export default function CouleurMontre() {
+  const { language } = useLanguage();
+
   return (
     <section id="couleur" className="w-full relative bg-background">
 
@@ -23,7 +26,7 @@ export default function CouleurMontre() {
           className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
           style={{ left: "336px" }}
         >
-          02 · Couleur
+          {language === "fr" ? "02 · Couleur" : "02 · Color"}
         </motion.p>
 
         {/* Haut gauche — Noir CACAO */}
@@ -37,7 +40,9 @@ export default function CouleurMontre() {
           {/* Texte */}
           <div className="flex flex-col gap-1">
             <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              Noir <span className="font-light italic">Cacao</span>
+              {language === "fr"
+                ? <>Noir <span className="font-light italic">Cacao</span></>
+                : <>Black <span className="font-light italic">Cacao</span></>}
             </p>
             {[
               { label: "HEX",  value: "#0F0908" },
@@ -68,7 +73,9 @@ export default function CouleurMontre() {
           {/* Texte */}
           <div className="flex flex-col gap-1">
             <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              Brun <span className="font-light italic">Terracotta</span>
+              {language === "fr"
+                ? <>Brun <span className="font-light italic">Terracotta</span></>
+                : <>Brown <span className="font-light italic">Terracotta</span></>}
             </p>
             {[
               { label: "HEX",  value: "#B0584B" },

@@ -15,11 +15,14 @@ import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
+import { useLanguage } from "@/lib/language";
+import { setPageMetadata } from "@/lib/seo";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const { pathname } = useLocation();
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { language } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,6 +42,22 @@ export default function App() {
       if (el) el.scrollIntoView();
     });
   }, [loading]);
+
+  useEffect(() => {
+    if (pathname !== "/" && pathname !== "/*") return;
+    return setPageMetadata({
+      title:
+        language === "fr"
+          ? "Roseline Cheng — Design UX/UI · Motion Design · Gobelins"
+          : "Roseline Cheng — UX/UI Design · Motion Design · Gobelins",
+      description:
+        language === "fr"
+          ? "Roseline Cheng — Étudiante en DNMADE Graphisme aux Gobelins. Passionnée par le design graphique, le motion design et l'UX/UI."
+          : "Roseline Cheng — DNMADE Graphic Design student at Gobelins. Passionate about graphic design, motion design, and UX/UI.",
+      canonical: "https://www.roselinecheng.com/",
+      ogLocale: language === "fr" ? "fr_FR" : "en_US",
+    });
+  }, [language, pathname]);
 
   return (
     <Routes>

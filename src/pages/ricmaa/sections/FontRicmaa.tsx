@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { fadeUp, stagger } from "../animations";
 import ricmaaTriangle from "@/assets/images/Projects/ricmaa/ricmaa_triangle.png";
+import { useLanguage } from "@/lib/language";
 
 export default function FontRicmaa() {
   const [activeWeight, setActiveWeight] = useState<400 | 500 | 700>(400);
+  const { language } = useLanguage();
 
   return (
     <section id="font" className="w-full px-8 md:px-20 pb-16 bg-background">
@@ -17,7 +19,7 @@ export default function FontRicmaa() {
           transition={{ duration: 0.5 }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
-          02 · Font
+          {language === "fr" ? "02 · Font" : "02 · Typeface"}
         </motion.p>
 
         {/* Image pleine largeur avec texte overlay à gauche */}
@@ -59,17 +61,21 @@ export default function FontRicmaa() {
                 fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
                 fontWeight: 700,
               }}
-            >
-              Typographie
-              <br />
-            </motion.h2>
+              >
+                {language === "fr" ? "Typographie" : "Typography"}
+                <br />
+              </motion.h2>
             <motion.div variants={fadeUp} className="h-px w-10 bg-foreground/25 mb-8" />
 
             {/* Typo — style brand guide */}
             <motion.div variants={fadeUp} className="mb-8">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>Police principale</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                {language === "fr" ? "Police principale" : "Primary typeface"}
+              </p>
               <p className="text-2xl text-foreground/80 mb-8" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 300 }}>Poppins</p>
-              <p className="text-[10px] text-foreground/30 mb-1 italic" style={{ fontFamily: "'Poppins', sans-serif" }}>Cliquer pour tester les tailles</p>
+              <p className="text-[10px] text-foreground/30 mb-1 italic" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                {language === "fr" ? "Cliquer pour tester les tailles" : "Click to test weights"}
+              </p>
 
               {/* Ligne séparatrice haut */}
               <div className="h-px bg-foreground/10" />

@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useLanguage } from "@/lib/language";
 
 export default function NavbarRicmaa() {
   const [activeSection, setActiveSection] = useState("");
+  const { language } = useLanguage();
 
   useEffect(() => {
     const ids = ["contexte", "font", "couleurs", "parcours", "design-final"];
@@ -38,17 +40,17 @@ export default function NavbarRicmaa() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          Accueil
+          {language === "fr" ? "Accueil" : "Home"}
         </Link>
 
         {/* Liens sections */}
         <div className="hidden md:flex items-center gap-6 ml-auto mr-8">
           {[
-            { label: "Contexte",     href: "#contexte" },
-            { label: "Font",         href: "#font" },
-            { label: "Couleurs",     href: "#couleurs" },
-            { label: "Parcours",     href: "#parcours" },
-            { label: "Design final", href: "#design-final" },
+            { label: { fr: "Contexte", en: "Context" }, href: "#contexte" },
+            { label: { fr: "Font", en: "Font" }, href: "#font" },
+            { label: { fr: "Couleurs", en: "Colors" }, href: "#couleurs" },
+            { label: { fr: "Parcours", en: "Journey" }, href: "#parcours" },
+            { label: { fr: "Design final", en: "Final design" }, href: "#design-final" },
           ].map((item) => (
             <a
               key={item.href}
@@ -59,7 +61,7 @@ export default function NavbarRicmaa() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {item.label}
+              {item.label[language]}
               {activeSection === item.href && (
                 <motion.span
                   layoutId="ric-nav-indicator"

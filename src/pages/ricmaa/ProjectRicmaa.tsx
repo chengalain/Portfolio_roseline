@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/lib/language";
+import { setPageMetadata } from "@/lib/seo";
 import NavbarRicmaa from "./sections/NavbarRicmaa";
 import HeroRicmaa from "./sections/HeroRicmaa";
 import IntroRicmaa from "./sections/IntroRicmaa";
@@ -13,27 +15,22 @@ import FooterRicmaa from "./sections/FooterRicmaa";
 
 export default function ProjectRicmaa() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { language } = useLanguage();
 
   useEffect(() => {
-    const previousTitle = document.title;
-    const descriptionMeta = document.querySelector('meta[name="description"]');
-    const previousDescription = descriptionMeta?.getAttribute("content") ?? "";
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    const previousCanonical = canonicalLink?.getAttribute("href") ?? "";
-
-    document.title = "Projet Ricmaa Custom — Roseline Cheng";
-    descriptionMeta?.setAttribute(
-      "content",
-      "Étude de cas UX/UI du projet Ricmaa Custom: direction artistique, parcours utilisateur et design final."
-    );
-    canonicalLink?.setAttribute("href", "https://www.roselinecheng.com/projets/ricmaa");
-
-    return () => {
-      document.title = previousTitle;
-      descriptionMeta?.setAttribute("content", previousDescription);
-      canonicalLink?.setAttribute("href", previousCanonical);
-    };
-  }, []);
+    return setPageMetadata({
+      title:
+        language === "fr"
+          ? "Projet Ricmaa Custom — Roseline Cheng"
+          : "Ricmaa Custom Project — Roseline Cheng",
+      description:
+        language === "fr"
+          ? "Étude de cas UX/UI du projet Ricmaa Custom: direction artistique, parcours utilisateur et design final."
+          : "UX/UI case study of the Ricmaa Custom project: art direction, user journey, and final design.",
+      canonical: "https://www.roselinecheng.com/projets/ricmaa",
+      ogLocale: language === "fr" ? "fr_FR" : "en_US",
+    });
+  }, [language]);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 300);
@@ -52,7 +49,7 @@ export default function ProjectRicmaa() {
         animate={{ opacity: showScrollTop ? 1 : 0, pointerEvents: showScrollTop ? "auto" : "none" }}
         transition={{ duration: 0.3 }}
         className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/80 backdrop-blur-sm text-muted-foreground hover:text-foreground transition-colors"
-        aria-label="Remonter en haut"
+        aria-label={language === "fr" ? "Remonter en haut" : "Back to top"}
       >
         <ArrowUp className="h-4 w-4" />
       </motion.button>

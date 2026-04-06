@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/lib/language";
 import montrePrincipal from "@/assets/images/Projects/blender/accueil/montre_principal.png";
 import montre1 from "@/assets/images/Projects/blender/accueil/montre_1.png";
 import montre2 from "@/assets/images/Projects/blender/accueil/montre_2.png";
@@ -27,6 +28,7 @@ const FLOATING_IMAGES = [
 
 export default function HeroMontre() {
   const constraintsRef = useRef<HTMLElement>(null);
+  const { language } = useLanguage();
 
   return (
     <>
@@ -41,7 +43,7 @@ export default function HeroMontre() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-[11px] uppercase tracking-[0.3em] text-foreground/30 pointer-events-none"
         >
-          Déplace les images
+          {language === "fr" ? "Déplace les images" : "Move the images"}
         </motion.p>
 
         <div
@@ -99,7 +101,7 @@ export default function HeroMontre() {
               variants={fadeUp}
               className="text-xs uppercase tracking-[0.35em] text-foreground/30 mb-6"
             >
-              Modélisation 3D · Blender · 2025
+              {language === "fr" ? "Modélisation 3D · Blender · 2025" : "3D Modeling · Blender · 2025"}
             </motion.p>
 
             <motion.h1
@@ -111,7 +113,7 @@ export default function HeroMontre() {
                 fontWeight: 700,
               }}
             >
-              Montre 3D
+              {language === "fr" ? "Montre 3D" : "3D Watch"}
             </motion.h1>
 
             <motion.div variants={fadeUp} className="h-px w-16 bg-foreground/20 mb-10" />
@@ -120,8 +122,9 @@ export default function HeroMontre() {
               variants={fadeUp}
               className="text-foreground/55 text-base leading-relaxed max-w-2xl mb-6"
             >
-              Modélisation et animation 3D d'une montre réalisées en cours sur Blender.
-              Travail sur la géométrie, les matériaux et le rendu.
+              {language === "fr"
+                ? "Modélisation et animation 3D d'une montre réalisées en cours sur Blender. Travail sur la géométrie, les matériaux et le rendu."
+                : "3D watch modeling and animation created in class with Blender. Work focused on geometry, materials, and rendering."}
             </motion.p>
 
             <motion.div
@@ -129,10 +132,18 @@ export default function HeroMontre() {
               className="mt-14 pt-10 border-t border-foreground/10 grid grid-cols-2 md:grid-cols-4 gap-8"
             >
               {[
-                { label: "Rôle",     value: "Modélisation 3D" },
-                { label: "Outil",    value: "Blender" },
-                { label: "Contexte", value: "Cours" },
-                { label: "Année",    value: "2025" },
+                language === "fr"
+                  ? { label: "Rôle", value: "Modélisation 3D" }
+                  : { label: "Role", value: "3D Modeling" },
+                language === "fr"
+                  ? { label: "Outil", value: "Blender" }
+                  : { label: "Tool", value: "Blender" },
+                language === "fr"
+                  ? { label: "Contexte", value: "Cours" }
+                  : { label: "Context", value: "Class project" },
+                language === "fr"
+                  ? { label: "Année", value: "2025" }
+                  : { label: "Year", value: "2025" },
               ].map((item) => (
                 <div key={item.label}>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-2">{item.label}</p>

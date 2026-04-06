@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/lib/language";
 import pcRicAccueil from "@/assets/images/Projects/ricmaa/parcour_user/pc_ric_acceulle.png";
 import ricmaaRic from "@/assets/images/Projects/ricmaa/parcour_user/ricmaa_ric.png";
 import hemshRic from "@/assets/images/Projects/ricmaa/parcour_user/hemsh_ric.png";
@@ -22,6 +23,7 @@ export default function ParcoursRicmaa() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
   const touchStartX = useRef<number>(0);
+  const { language } = useLanguage();
 
   const goNext = () => { setDirection(1);  setCurrentSlide((p) => (p + 1) % slides.length); };
   const goPrev = () => { setDirection(-1); setCurrentSlide((p) => (p - 1 + slides.length) % slides.length); };
@@ -44,7 +46,7 @@ export default function ParcoursRicmaa() {
           viewport={{ once: true }}
           className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
         >
-          04 · Parcours utilisateur
+          {language === "fr" ? "04 · Parcours utilisateur" : "04 · User journey"}
         </motion.p>
 
         <motion.h2
@@ -55,7 +57,11 @@ export default function ParcoursRicmaa() {
           className="text-foreground leading-tight mb-16"
           style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.8rem, 3.5vw, 3rem)", fontWeight: 700 }}
         >
-          Navigation <span className="text-foreground/30">du site</span>
+          {language === "fr" ? (
+            <>Navigation <span className="text-foreground/30">du site</span></>
+          ) : (
+            <>Website <span className="text-foreground/30">navigation</span></>
+          )}
         </motion.h2>
 
         {/* Flow vertical */}
@@ -70,7 +76,7 @@ export default function ParcoursRicmaa() {
             className="w-full md:w-[60%] self-center"
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              01 · Accueil
+              {language === "fr" ? "01 · Accueil" : "01 · Home"}
             </p>
             <div className="overflow-hidden">
               <img src={pcRicAccueil} alt="Accueil Ricmaa" className="w-full object-cover" />

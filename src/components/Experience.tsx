@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "@/constants";
+import { useLanguage } from "@/lib/language";
 
 export default function Experience() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const count = EXPERIENCES.length;
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,12 +36,14 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Parcours</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">
+            {language === "fr" ? "Parcours" : "Journey"}
+          </p>
           <h2
             className="leading-none text-foreground"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700 }}
           >
-            Expériences
+            {language === "fr" ? "Expériences" : "Experience"}
           </h2>
         </motion.div>
       </div>
@@ -104,14 +108,14 @@ export default function Experience() {
                         <div className="flex items-center gap-4">
                           {expItem.logo && (
                             <div className="h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-muted flex items-center justify-center">
-                              <img src={expItem.logo} alt={expItem.organisation} className="h-8 w-8 object-contain" />
+                              <img src={expItem.logo} alt={expItem.organisation[language]} className="h-8 w-8 object-contain" />
                             </div>
                           )}
                           <div>
                             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-0.5">
-                              {pos.duration}
+                              {pos.duration[language]}
                             </p>
-                            <h3 className="font-semibold text-foreground text-lg">{expItem.organisation}</h3>
+                            <h3 className="font-semibold text-foreground text-lg">{expItem.organisation[language]}</h3>
                           </div>
                         </div>
 
@@ -124,7 +128,7 @@ export default function Experience() {
                             fontWeight: 700,
                           }}
                         >
-                          {pos.title}
+                          {pos.title[language]}
                         </p>
                       </div>
 
@@ -149,7 +153,9 @@ export default function Experience() {
 
                     {/* Colonne droite — missions */}
                     <div className="flex flex-col justify-center p-10 md:p-14 z-10">
-                      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/50 mb-6">Missions</p>
+                      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/50 mb-6">
+                        {language === "fr" ? "Missions" : "Responsibilities"}
+                      </p>
                       <ul className="space-y-4">
                         {pos.content?.map((c, cIdx) => (
                           <motion.li
@@ -160,7 +166,7 @@ export default function Experience() {
                             className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
                           >
                             <span className="mt-2 h-px w-4 shrink-0 bg-muted-foreground/40" />
-                            {c.text}
+                            {c.text[language]}
                           </motion.li>
                         ))}
                       </ul>
@@ -179,7 +185,13 @@ export default function Experience() {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50"
             >
-              {activeIndex < count - 1 ? "Scroller pour continuer" : "Scroller pour quitter"}
+              {activeIndex < count - 1
+                ? language === "fr"
+                  ? "Scroller pour continuer"
+                  : "Scroll to continue"
+                : language === "fr"
+                  ? "Scroller pour quitter"
+                  : "Scroll to exit"}
             </motion.p>
           </div>
 
