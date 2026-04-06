@@ -14,14 +14,14 @@ const stagger = {
 
 export default function ContexteMontre() {
   return (
-    <section id="contexte" className="w-full" style={{ backgroundColor: "#000000" }}>
+    <section id="contexte" className="w-full bg-background">
 
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-xs uppercase tracking-[0.35em] text-white/25 px-8 md:px-[336px] pt-10 mb-14"
+        className="text-xs uppercase tracking-[0.35em] text-foreground/25 px-8 md:px-[336px] pt-10 mb-14"
       >
         01 · Contexte
       </motion.p>
@@ -65,7 +65,7 @@ export default function ContexteMontre() {
         >
           <motion.h2
             variants={fadeUp}
-            className="text-white leading-tight mb-5"
+            className="text-foreground leading-tight mb-5"
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
@@ -75,11 +75,11 @@ export default function ContexteMontre() {
             Explication du contexte
           </motion.h2>
 
-          <motion.div variants={fadeUp} className="h-px w-10 bg-white/30 mb-6" />
+          <motion.div variants={fadeUp} className="h-px w-10 text-foreground/30 mb-6" />
 
           <motion.p
             variants={fadeUp}
-            className="text-white/75 text-sm leading-relaxed mb-4"
+            className="text-foreground/75 text-sm leading-relaxed mb-4"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             Projet réalisé en novembre 2025 lors de mes premières séances sur Blender avec Henri
@@ -88,7 +88,7 @@ export default function ContexteMontre() {
 
           <motion.p
             variants={fadeUp}
-            className="text-white/55 text-sm leading-relaxed"
+            className="text-foreground/55 text-sm leading-relaxed"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             J'ai choisi une montre Cartier et en quelques jours, j'ai modélisé, animé, coloré et texturé
@@ -100,7 +100,7 @@ export default function ContexteMontre() {
         {/* Fondu bas vers noir */}
         <div
           className="absolute bottom-0 left-0 w-full h-40 pointer-events-none z-20"
-          style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+          style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--background)))" }}
         />
       </motion.div>
 

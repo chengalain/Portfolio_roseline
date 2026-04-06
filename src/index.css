@@ -82,53 +82,6 @@
     @apply mt-2 text-muted-foreground max-w-2xl;
   }
 
-  .glass-card {
-    @apply rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm
-           transition-colors duration-300 hover:border-border;
-  }
-
-  .gradient-text {
-    background: radial-gradient(
-      64.18% 64.18% at 71.16% 35.69%,
-      #ffffff 0%,
-      #f0e6d3 40%,
-      #d9c9a8 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  :root .gradient-text {
-    background: radial-gradient(
-      64.18% 64.18% at 71.16% 35.69%,
-      #1a1a1a 0%,
-      #3d3530 50%,
-      #5c4f3d 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .dark .gradient-text {
-    background: radial-gradient(
-      64.18% 64.18% at 71.16% 35.69%,
-      #ffffff 0%,
-      #f0e6d3 40%,
-      #d9c9a8 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-border
-           bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground
-           transition-colors hover:border-accent/30 hover:text-foreground;
-  }
-
   .marquee-scroll {
     animation: scrollLeft 25s linear infinite;
   }
@@ -138,16 +91,6 @@
     100% { transform: translateX(-50%); }
   }
 
-  .skill-card {
-    @apply flex flex-col items-center justify-center gap-2 rounded-xl
-           bg-muted/40 px-3 py-3.5
-           transition-all duration-300 select-none cursor-default;
-  }
-
-  .skill-card:hover {
-    @apply bg-accent/10;
-    box-shadow: 0 0 16px hsl(var(--accent) / 0.08);
-  }
 }
 
 /* Ambient gradient orbs */

@@ -3,7 +3,7 @@ import montreCouleur from "@/assets/images/Projects/blender/couleur/montre_coule
 
 export default function CouleurMontre() {
   return (
-    <section id="couleur" className="w-full relative" style={{ backgroundColor: "#000000" }}>
+    <section id="couleur" className="w-full relative bg-background">
 
       {/* Image pleine largeur */}
       <div className="relative">
@@ -11,7 +11,7 @@ export default function CouleurMontre() {
         {/* Fondu haut — raccord avec Contexte */}
         <div
           className="absolute top-0 left-0 w-full h-40 pointer-events-none z-10"
-          style={{ background: "linear-gradient(to top, transparent, #000000)" }}
+          style={{ background: "linear-gradient(to top, transparent, hsl(var(--background)))" }}
         />
 
         {/* Label section */}
@@ -20,7 +20,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-white/25"
+          className="absolute top-10 z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
           style={{ left: "336px" }}
         >
           02 · Couleur
@@ -36,7 +36,7 @@ export default function CouleurMontre() {
         >
           {/* Texte */}
           <div className="flex flex-col gap-1">
-            <p className="text-white text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
               Noir <span className="font-light italic">Cacao</span>
             </p>
             {[
@@ -46,13 +46,13 @@ export default function CouleurMontre() {
               { label: "HSL",  value: "9°, 31%, 5%" },
             ].map((row) => (
               <div key={row.label} className="flex items-baseline gap-2">
-                <span className="text-[9px] uppercase tracking-[0.25em] text-white/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
-                <span className="text-[11px] font-mono text-white/70">{row.value}</span>
+                <span className="text-[9px] uppercase tracking-[0.25em] text-foreground/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
+                <span className="text-[11px] font-mono text-foreground/70">{row.value}</span>
               </div>
             ))}
           </div>
           {/* Cercle */}
-          <div className="w-20 h-20 rounded-full border border-white/20 flex-shrink-0 self-center" style={{ backgroundColor: "#0F0908" }} />
+          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: "#0F0908" }} />
         </motion.div>
 
         {/* Bas droite — Brun TERRACOTTA */}
@@ -64,10 +64,10 @@ export default function CouleurMontre() {
           className="absolute bottom-32 right-[20%] z-20 flex items-stretch gap-4"
         >
           {/* Cercle */}
-          <div className="w-20 h-20 rounded-full border border-white/20 flex-shrink-0 self-center" style={{ backgroundColor: "#B0584B" }} />
+          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: "#B0584B" }} />
           {/* Texte */}
           <div className="flex flex-col gap-1">
-            <p className="text-white text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
               Brun <span className="font-light italic">Terracotta</span>
             </p>
             {[
@@ -77,8 +77,8 @@ export default function CouleurMontre() {
               { label: "HSL",  value: "8°, 40%, 49%" },
             ].map((row) => (
               <div key={row.label} className="flex items-baseline gap-2">
-                <span className="text-[9px] uppercase tracking-[0.25em] text-white/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
-                <span className="text-[11px] font-mono text-white/70">{row.value}</span>
+                <span className="text-[9px] uppercase tracking-[0.25em] text-foreground/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
+                <span className="text-[11px] font-mono text-foreground/70">{row.value}</span>
               </div>
             ))}
           </div>

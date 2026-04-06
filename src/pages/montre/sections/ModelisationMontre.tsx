@@ -16,7 +16,7 @@ const stagger = {
 
 export default function ModelisationMontre() {
   return (
-    <section id="modelisation" className="w-full px-8 md:px-20 py-24" style={{ backgroundColor: "#000000" }}>
+    <section id="modelisation" className="w-full px-8 md:px-20 py-24 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -24,7 +24,7 @@ export default function ModelisationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-white/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
           05 · Modélisation
         </motion.p>
@@ -57,7 +57,7 @@ export default function ModelisationMontre() {
             { src: montreBlanc,  alt: "Montre blanche" },
             { src: montreOrange, alt: "Montre orange"  },
           ].map((img) => (
-            <motion.div key={img.alt} variants={fadeUp} className="overflow-hidden rounded-sm aspect-square flex items-center justify-center bg-black">
+            <motion.div key={img.alt} variants={fadeUp} className="overflow-hidden rounded-sm aspect-square flex items-center justify-center bg-background">
               <img src={img.src} alt={img.alt} className="w-full h-full object-contain" />
             </motion.div>
           ))}

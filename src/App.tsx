@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import ProjectRicmaa from "@/pages/ProjectRicmaa";
+import ProjectRicmaa from "@/pages/ricmaa/ProjectRicmaa";
 import ProjectMontre from "@/pages/montre/ProjectMontre";
 import Loading from "@/components/Loading";
 import GradientOrbs from "@/components/GradientOrbs";

@@ -33,20 +33,20 @@ export default function HeroMontre() {
       {/* ── HERO — composition draggable ── */}
       <motion.section
         ref={constraintsRef}
-        className="relative w-screen h-screen overflow-hidden bg-black"
+        className="relative w-screen h-screen overflow-hidden bg-background"
       >
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-[11px] uppercase tracking-[0.3em] text-white/30 pointer-events-none"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-[11px] uppercase tracking-[0.3em] text-foreground/30 pointer-events-none"
         >
           Déplace les images
         </motion.p>
 
         <div
           className="absolute bottom-0 left-0 w-full h-48 pointer-events-none z-10"
-          style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+          style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--background)))" }}
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32%] z-10">
@@ -87,7 +87,7 @@ export default function HeroMontre() {
       </motion.section>
 
       {/* ── INTRO ── */}
-      <section className="w-full py-24 px-8 md:px-20" style={{ backgroundColor: "#000000" }}>
+      <section className="w-full py-24 px-8 md:px-20 bg-background">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={stagger}
@@ -97,14 +97,14 @@ export default function HeroMontre() {
           >
             <motion.p
               variants={fadeUp}
-              className="text-xs uppercase tracking-[0.35em] text-white/30 mb-6"
+              className="text-xs uppercase tracking-[0.35em] text-foreground/30 mb-6"
             >
               Modélisation 3D · Blender · 2025
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
-              className="text-white leading-tight mb-8"
+              className="text-foreground leading-tight mb-8"
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: "clamp(2.5rem, 6vw, 5rem)",
@@ -114,11 +114,11 @@ export default function HeroMontre() {
               Montre 3D
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="h-px w-16 bg-white/20 mb-10" />
+            <motion.div variants={fadeUp} className="h-px w-16 bg-foreground/20 mb-10" />
 
             <motion.p
               variants={fadeUp}
-              className="text-white/55 text-base leading-relaxed max-w-2xl mb-6"
+              className="text-foreground/55 text-base leading-relaxed max-w-2xl mb-6"
             >
               Modélisation et animation 3D d'une montre réalisées en cours sur Blender.
               Travail sur la géométrie, les matériaux et le rendu.
@@ -126,7 +126,7 @@ export default function HeroMontre() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-14 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8"
+              className="mt-14 pt-10 border-t border-foreground/10 grid grid-cols-2 md:grid-cols-4 gap-8"
             >
               {[
                 { label: "Rôle",     value: "Modélisation 3D" },
@@ -135,8 +135,8 @@ export default function HeroMontre() {
                 { label: "Année",    value: "2025" },
               ].map((item) => (
                 <div key={item.label}>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/25 mb-2">{item.label}</p>
-                  <p className="text-sm text-white/70 font-light">{item.value}</p>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-2">{item.label}</p>
+                  <p className="text-sm text-foreground/70 font-light">{item.value}</p>
                 </div>
               ))}
             </motion.div>
