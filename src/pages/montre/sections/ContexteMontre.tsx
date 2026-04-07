@@ -28,17 +28,51 @@ export default function ContexteMontre() {
         {language === "fr" ? "01 · Contexte" : "01 · Context"}
       </motion.p>
 
-      {/* Carte pleine largeur */}
+      {/* Mobile — layout empilé */}
+      <div className="md:hidden px-6 pb-10">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-foreground leading-tight mb-5"
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.8rem, 6vw, 2.5rem)", fontWeight: 700 }}
+          >
+            {language === "fr" ? "Explication du contexte" : "Context explanation"}
+          </motion.h2>
+          <motion.div variants={fadeUp} className="h-px w-10 bg-foreground/30 mb-5" />
+          <motion.p variants={fadeUp} className="text-foreground/75 text-sm leading-relaxed mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            {language === "fr"
+              ? "Projet réalisé en novembre 2025 lors de mes premières séances sur Blender avec Henri Arbezier. L'objectif était de se familiariser avec la modélisation 3D à travers un objet en éclaté."
+              : "Project completed in November 2025 during my first Blender sessions with Henri Arbezier. The goal was to get familiar with 3D modeling through an exploded object study."}
+          </motion.p>
+          <motion.p variants={fadeUp} className="text-foreground/55 text-sm leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            {language === "fr"
+              ? "J'ai choisi une montre Cartier et en quelques jours, j'ai modélisé, animé, coloré et texturé l'ensemble, apprenant à gérer tous les aspects du workflow 3D et montrant ma progression rapide sur Blender."
+              : "I chose a Cartier-inspired watch and, in just a few days, modeled, animated, colored, and textured it, learning every part of the 3D workflow and showing rapid progress in Blender."}
+          </motion.p>
+          <motion.img
+            variants={fadeUp}
+            src={montreDeFace}
+            alt="Montre Cartier de face"
+            className="w-48 mx-auto mt-8 object-contain drop-shadow-xl"
+          />
+        </motion.div>
+      </div>
+
+      {/* Desktop — layout absolu */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative w-full"
+        className="relative w-full hidden md:block"
       >
-        <div className="w-full h-[62vh] md:h-[78vh] block bg-background" />
+        <div className="w-full h-[78vh] block bg-background" />
 
-        {/* Montre de face — droite, positionnée en absolu */}
         <motion.img
           src={montreDeFace}
           alt="Montre Cartier de face"
@@ -50,51 +84,34 @@ export default function ContexteMontre() {
           style={{ width: "clamp(90px, 16vw, 280px)", right: "clamp(8rem, 20vw, 22rem)" }}
         />
 
-        {/* Texte — bas gauche */}
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="absolute bottom-8 left-6 md:bottom-24 md:left-16 lg:left-80 z-10 pr-6"
+          className="absolute bottom-24 left-16 lg:left-80 z-10 pr-6"
           style={{ maxWidth: "min(92vw, 42rem)" }}
         >
           <motion.h2
             variants={fadeUp}
             className="text-foreground leading-tight mb-5"
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: 700,
-            }}
-            >
+            style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700 }}
+          >
             {language === "fr" ? "Explication du contexte" : "Context explanation"}
           </motion.h2>
-
-          <motion.div variants={fadeUp} className="h-px w-10 text-foreground/30 mb-6" />
-
-          <motion.p
-            variants={fadeUp}
-            className="text-foreground/75 text-sm leading-relaxed mb-4"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
+          <motion.div variants={fadeUp} className="h-px w-10 bg-foreground/30 mb-6" />
+          <motion.p variants={fadeUp} className="text-foreground/75 text-sm leading-relaxed mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
             {language === "fr"
               ? "Projet réalisé en novembre 2025 lors de mes premières séances sur Blender avec Henri Arbezier. L'objectif était de se familiariser avec la modélisation 3D à travers un objet en éclaté."
               : "Project completed in November 2025 during my first Blender sessions with Henri Arbezier. The goal was to get familiar with 3D modeling through an exploded object study."}
           </motion.p>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-foreground/55 text-sm leading-relaxed"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
+          <motion.p variants={fadeUp} className="text-foreground/55 text-sm leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
             {language === "fr"
               ? "J'ai choisi une montre Cartier et en quelques jours, j'ai modélisé, animé, coloré et texturé l'ensemble, apprenant à gérer tous les aspects du workflow 3D et montrant ma progression rapide sur Blender."
               : "I chose a Cartier-inspired watch and, in just a few days, modeled, animated, colored, and textured it, learning every part of the 3D workflow and showing rapid progress in Blender."}
           </motion.p>
         </motion.div>
 
-        {/* Fondu bas vers noir */}
         <div
           className="absolute bottom-0 left-0 w-full h-40 pointer-events-none z-20"
           style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--background)))" }}
