@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 
 export default function FooterPortfolio() {
@@ -17,11 +17,11 @@ export default function FooterPortfolio() {
           </p>
         </div>
         <Link
-          to="/"
+          to="/projets/ricmaa"
           className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
         >
-          <ArrowLeft className="h-4 w-4" />
-          {language === "fr" ? "Retour au portfolio" : "Back to portfolio"}
+          {language === "fr" ? "Projet suivant — Ricmaa Custom" : "Next project — Ricmaa Custom"}
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>

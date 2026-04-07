@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUp } from "lucide-react";
+import { ArrowRight, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
@@ -78,11 +78,11 @@ export default function ProjectMontre() {
             </p>
           </div>
           <Link
-            to="/"
+            to="/projets/portfolio"
             className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
           >
-            <ArrowLeft className="h-4 w-4" />
-            {language === "fr" ? "Retour au portfolio" : "Back to portfolio"}
+            {language === "fr" ? "Projet suivant — Portfolio" : "Next project — Portfolio"}
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
