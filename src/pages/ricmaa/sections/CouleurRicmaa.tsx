@@ -56,7 +56,7 @@ export default function CouleurRicmaa() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="flex flex-col gap-0 border border-foreground/8 overflow-hidden"
+          className="flex flex-col gap-0 border border-white/8 overflow-hidden bg-zinc-900"
         >
           {[
             { name: "Blanc",           hex: "#FFFFFF", rgb: "255, 255, 255", cmyk: "0, 0, 0, 0",   hsl: "0°, 0%, 100%"  },
@@ -67,7 +67,7 @@ export default function CouleurRicmaa() {
             <motion.div
               key={color.hex}
               variants={fadeUp}
-              className="flex items-stretch border-b border-foreground/8 last:border-b-0"
+              className="flex items-stretch border-b border-white/8 last:border-b-0"
             >
               {/* Swatch */}
               <div
@@ -76,10 +76,10 @@ export default function CouleurRicmaa() {
               />
 
               {/* Nom */}
-              <div className="flex items-center px-6 border-r border-foreground/8 w-[160px] flex-shrink-0">
+              <div className="flex items-center px-6 border-r border-white/8 w-[160px] flex-shrink-0">
                 <p
-                  className="text-sm text-foreground/80 font-medium"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  className="text-sm font-medium"
+                  style={{ fontFamily: "'Poppins', sans-serif", color: "rgba(255,255,255,0.8)" }}
                 >
                   {color.name}
                 </p>
@@ -95,8 +95,8 @@ export default function CouleurRicmaa() {
                 ].map((row) => (
                   <div key={row.label} className="flex flex-col gap-1 w-[130px] flex-shrink-0">
                     <span
-                      className="text-[8px] uppercase tracking-[0.3em] text-foreground/20"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                      className="text-[8px] uppercase tracking-[0.3em]"
+                      style={{ fontFamily: "'Poppins', sans-serif", color: "rgba(255,255,255,0.2)" }}
                     >
                       {row.label}
                     </span>
@@ -111,8 +111,8 @@ export default function CouleurRicmaa() {
               </div>
 
               {/* Numéro */}
-              <div className="flex items-center pr-6 pl-4 border-l border-foreground/8">
-                <span className="text-[10px] font-mono text-foreground/15">
+              <div className="flex items-center pr-6 pl-4 border-l border-white/8">
+                <span className="text-[10px] font-mono" style={{ color: "rgba(255,255,255,0.15)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
