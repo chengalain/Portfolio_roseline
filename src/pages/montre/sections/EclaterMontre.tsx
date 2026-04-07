@@ -1,85 +1,89 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
-import eclaterMontre from "@/assets/images/Projects/blender/eclater/eclater_montre.png";
-import eclaterMontre1 from "@/assets/images/Projects/blender/eclater/eclater_montre1.png";
-import partieMontre from "@/assets/images/Projects/blender/eclater/partie_montre.png";
+import { Suspense, useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, useAnimations, OrbitControls, Environment } from "@react-three/drei";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/language";
+import montrGlb from "@/assets/images/Projects/blender/eclater/roseline_cheng_copie 2.glb?url";
+import * as THREE from "three";
+
+function WatchModel() {
+  const group = useRef<THREE.Group>(null);
+  const { scene, animations } = useGLTF(montrGlb);
+  const { actions, names } = useAnimations(animations, group);
+
+  useEffect(() => {
+    if (names.length > 0) {
+      const action = actions[names[0]];
+      if (action) {
+        action.reset().play();
+        action.clampWhenFinished = false;
+        action.setLoop(THREE.LoopRepeat, Infinity);
+      }
+    }
+  }, [actions, names]);
+
+  useFrame(() => {
+    if (group.current && names.length === 0) {
+      group.current.rotation.y += 0.003;
+    }
+  });
+
+  return <primitive ref={group} object={scene} />;
+}
 
 export default function EclaterMontre() {
   const { language } = useLanguage();
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  // Image gauche — suit dans un sens
-  const leftX = useTransform(springX, [-1, 1], [-30, 30]);
-  const leftY = useTransform(springY, [-1, 1], [-20, 20]);
-
-  // Image droite — suit dans le sens inverse
-  const rightX = useTransform(springX, [-1, 1], [30, -30]);
-  const rightY = useTransform(springY, [-1, 1], [20, -20]);
-
-  useEffect(() => {
-    const handle = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth) * 2 - 1);
-      mouseY.set((e.clientY / window.innerHeight) * 2 - 1);
-    };
-    window.addEventListener("mousemove", handle);
-    return () => window.removeEventListener("mousemove", handle);
-  }, [mouseX, mouseY]);
 
   return (
     <section id="eclater" className="w-full bg-background">
 
-      {/* Image principale + images flottantes par-dessus */}
-      <div className="relative w-full">
+      <div className="max-w-5xl mx-auto px-8 md:px-20 py-24">
 
-        {/* Label en overlay sur l'image */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="absolute top-6 left-6 md:top-10 md:left-16 lg:left-[336px] z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
         >
           {language === "fr" ? "03 · Éclaté" : "03 · Exploded view"}
         </motion.p>
 
-        <motion.img
-          src={eclaterMontre}
-          alt="Montre éclatée"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="overflow-hidden rounded-sm"
+          style={{ height: "500px" }}
+        >
+          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[5, 5, 5]} intensity={1.2} />
+            <directionalLight position={[-5, -2, -5]} intensity={0.4} />
+            <Suspense fallback={null}>
+              <WatchModel />
+              <Environment preset="studio" />
+            </Suspense>
+            <OrbitControls
+              enableZoom={true}
+              enablePan={false}
+              minDistance={2}
+              maxDistance={10}
+              autoRotate={false}
+            />
+          </Canvas>
+        </motion.div>
+
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full h-auto block"
-        />
-
-        {/* Gauche — par-dessus */}
-        <motion.img
-          src={eclaterMontre1}
-          alt="Éclaté vue 2"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          style={{ x: leftX, y: leftY }}
-          className="absolute left-[12%] top-[20%] w-[22%] object-contain drop-shadow-2xl hidden md:block"
-        />
-
-        {/* Droite — par-dessus */}
-        <motion.img
-          src={partieMontre}
-          alt="Partie montre"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          style={{ x: rightX, y: rightY }}
-          className="absolute right-[12%] top-[15%] w-[22%] object-contain drop-shadow-2xl hidden md:block"
-        />
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center text-xs text-muted-foreground/50 mt-4 tracking-widest uppercase"
+        >
+          {language === "fr" ? "Glisser pour pivoter · Scroll pour zoomer" : "Drag to rotate · Scroll to zoom"}
+        </motion.p>
 
       </div>
 
