@@ -18,7 +18,7 @@ const stagger = {
 export default function ModelisationMontre() {
   const { language } = useLanguage();
   return (
-    <section id="modelisation" className="w-full px-8 md:px-20 py-24 bg-background">
+    <section id="modelisation" className="w-full px-8 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -26,7 +26,7 @@ export default function ModelisationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 pt-10 mb-14"
         >
           {language === "fr" ? "05 · Modélisation" : "05 · Modeling"}
         </motion.p>

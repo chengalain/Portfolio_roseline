@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/language";
 export default function AnimationMontre() {
   const { language } = useLanguage();
   return (
-    <section id="animation" className="w-full px-8 md:px-20 py-24 bg-background">
+    <section id="animation" className="w-full px-8 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -13,7 +13,7 @@ export default function AnimationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 pt-10 mb-14"
         >
           {language === "fr" ? "06 · Animation" : "06 · Animation"}
         </motion.p>
