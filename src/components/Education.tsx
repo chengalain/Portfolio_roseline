@@ -66,7 +66,7 @@ export default function Education() {
                     edu.title[language]
                   )}
                 </h3>
-                <p className="mt-1 text-sm font-semibold text-accent/80">{edu.degree[language]}</p>
+                <p className="mt-1 text-sm font-semibold text-foreground/70">{edu.degree[language]}</p>
               </div>
             </div>
 

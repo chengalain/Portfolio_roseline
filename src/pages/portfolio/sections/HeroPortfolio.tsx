@@ -1,14 +1,18 @@
 import { useLanguage } from "@/lib/language";
-import portfolioVideo from "@/assets/images/Projects/portfolio/log_anim.mp4";
+import { useTheme } from "@/lib/theme";
+import videoDark from "@/assets/images/Projects/portfolio/log_anim.mp4";
+import videoLight from "@/assets/images/Projects/portfolio/logo_anim_blanc.mp4";
 
 export default function HeroPortfolio() {
   const { language } = useLanguage();
+  const { theme } = useTheme();
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <video
+        key={theme}
         className="h-full w-full object-cover"
-        src={portfolioVideo}
+        src={theme === "light" ? videoLight : videoDark}
         autoPlay
         muted
         loop
