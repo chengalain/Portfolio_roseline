@@ -218,7 +218,7 @@ export default function Projects() {
 
       <div ref={wrapperRef} className="hidden md:block" style={{ height: `${count * 100}vh` }}>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          <div className="absolute top-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             {PROJECTS.map((_, i) => (
               <div
                 key={i}
