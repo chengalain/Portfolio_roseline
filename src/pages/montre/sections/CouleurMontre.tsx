@@ -34,7 +34,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-20 left-4 md:top-60 md:left-[20%] z-20 hidden md:flex items-stretch gap-4"
+          className="absolute top-20 left-4 md:top-40 md:left-[20%] z-20 hidden md:flex items-stretch gap-4"
         >
           {/* Texte */}
           <div className="flex flex-col gap-1">
@@ -65,7 +65,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-20 right-4 md:bottom-32 md:right-[20%] z-20 hidden md:flex items-stretch gap-4"
+          className="absolute bottom-20 right-4 md:bottom-52 md:right-[20%] z-20 hidden md:flex items-stretch gap-4"
         >
           {/* Cercle */}
           <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: "#B0584B" }} />
@@ -97,7 +97,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full h-auto block"
+          className="w-full h-auto block relative -top-40 -mb-20"
         />
 
         <div className="md:hidden px-6 py-8 space-y-4">

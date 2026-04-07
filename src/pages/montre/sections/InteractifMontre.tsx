@@ -24,7 +24,7 @@ export default function InteractifMontre() {
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
 
   return (
-    <section id="interactif" className="w-full px-6 md:px-20 py-16 md:py-24 bg-background">
+    <section id="interactif" className="w-full px-8 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -42,7 +42,7 @@ export default function InteractifMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[11px] text-foreground/25 mb-10 tracking-wide"
+          className="text-[11px] text-foreground/25 pt-10 mb-10 tracking-wide"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           {language === "fr"

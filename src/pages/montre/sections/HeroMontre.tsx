@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/lib/language";
+import { useTheme } from "@/lib/theme";
 import montrePrincipal from "@/assets/images/Projects/blender/accueil/montre_principal.png";
 import montreFond from "@/assets/images/Projects/blender/context/montre_fond.png";
 import montre1 from "@/assets/images/Projects/blender/accueil/montre_1.png";
@@ -34,6 +35,7 @@ const FLOATING_IMAGES = [
 export default function HeroMontre() {
   const constraintsRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
+  const { theme } = useTheme();
 
   return (
     <>
@@ -46,7 +48,7 @@ export default function HeroMontre() {
           src={montreFond}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.38)" }}
+          style={{ filter: theme === "light" ? "brightness(0.85) invert(1)" : "brightness(0.38)" }}
         />
 
         <motion.p

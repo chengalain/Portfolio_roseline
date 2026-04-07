@@ -16,7 +16,7 @@ export default function ExplicationMontre() {
   const { language } = useLanguage();
 
   return (
-    <section id="explication" className="w-full px-8 md:px-20 py-24 bg-background">
+    <section id="explication" className="w-full px-8 md:px-20 pb-16 bg-background">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
@@ -24,7 +24,7 @@ export default function ExplicationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/25 pt-10 mb-14"
         >
           {language === "fr" ? "04 · Explication" : "04 · Explanation"}
         </motion.p>
