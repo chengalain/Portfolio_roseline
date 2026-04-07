@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/constants";
 import { useLanguage } from "@/lib/language";
+import { useTheme } from "@/lib/theme";
 import ThemeToggle from "./ThemeToggle";
 import Magnetic from "./Magnetic";
 
@@ -11,6 +12,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { language, setLanguage } = useLanguage();
+  const { theme } = useTheme();
+  const logoSrc = theme === "light" ? "/logo_blanc.png" : "/logo.png";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -67,7 +70,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Magnetic strength={0.3}>
             <a href="#" aria-label="Retour en haut">
-              <img src="/logo.png" alt="Roseline Cheng" className="h-8 w-auto object-contain" />
+              <img src={logoSrc} alt="Roseline Cheng" className="h-8 w-auto object-contain" />
             </a>
           </Magnetic>
         </div>

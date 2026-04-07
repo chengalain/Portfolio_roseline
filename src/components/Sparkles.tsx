@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useTheme } from "@/lib/theme";
 
 const SPARKLE_COUNT = 85;
 
@@ -31,6 +32,7 @@ function createSparkle(id: number): SparkleData {
 }
 
 export default function Sparkles() {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: -9999, y: -9999 });
   const sparkles = useRef<Array<SparkleData & { currentX: number; currentY: number; vy: number; phase: number }>>([]);
@@ -100,12 +102,14 @@ export default function Sparkles() {
         const alpha = s.opacity * flicker;
 
         // Dessin — cercle + halo
+        const isDark = document.documentElement.classList.contains("dark");
+        const color = isDark ? "white" : "black";
         ctx.save();
         ctx.globalAlpha = alpha * 0.25;
         ctx.beginPath();
         ctx.arc(s.currentX, s.currentY, s.size * 2.5, 0, Math.PI * 2);
         const grad = ctx.createRadialGradient(s.currentX, s.currentY, 0, s.currentX, s.currentY, s.size * 2.5);
-        grad.addColorStop(0, "white");
+        grad.addColorStop(0, color);
         grad.addColorStop(1, "transparent");
         ctx.fillStyle = grad;
         ctx.fill();
@@ -115,7 +119,7 @@ export default function Sparkles() {
         ctx.globalAlpha = alpha;
         ctx.beginPath();
         ctx.arc(s.currentX, s.currentY, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = "white";
+        ctx.fillStyle = color;
         ctx.fill();
         ctx.restore();
       }
@@ -146,7 +150,7 @@ export default function Sparkles() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ mixBlendMode: "screen" }}
+      style={{ mixBlendMode: theme === "light" ? "multiply" : "screen" }}
     />
   );
 }
