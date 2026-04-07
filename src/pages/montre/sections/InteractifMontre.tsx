@@ -32,7 +32,7 @@ export default function InteractifMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-4"
         >
           {language === "fr" ? "07 · Interactif" : "07 · Interactive"}
         </motion.p>
@@ -42,7 +42,7 @@ export default function InteractifMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[11px] text-foreground/25 pt-10 mb-10 tracking-wide"
+          className="text-[11px] text-foreground/50 pt-10 mb-10 tracking-wide"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           {language === "fr"

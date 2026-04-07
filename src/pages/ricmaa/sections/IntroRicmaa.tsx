@@ -76,7 +76,7 @@ export default function IntroRicmaa() {
                 : { label: "Year", value: "2025" },
             ].map((item) => (
               <div key={item.label}>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-2">{item.label}</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/50 mb-2">{item.label}</p>
                 <p className="text-sm text-foreground/70 font-light">{item.value}</p>
               </div>
             ))}

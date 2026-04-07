@@ -14,7 +14,7 @@ export default function ContexteRicmaa() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-14"
         >
           {language === "fr" ? "01 · Contexte" : "01 · Context"}
         </motion.p>

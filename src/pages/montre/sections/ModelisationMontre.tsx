@@ -26,7 +26,7 @@ export default function ModelisationMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 pt-10 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 pt-10 mb-14"
         >
           {language === "fr" ? "05 · Modélisation" : "05 · Modeling"}
         </motion.p>

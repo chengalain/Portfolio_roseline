@@ -14,7 +14,7 @@ export default function CouleurRicmaa() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-14"
         >
           {language === "fr" ? "03 · Couleurs" : "03 · Colors"}
         </motion.p>

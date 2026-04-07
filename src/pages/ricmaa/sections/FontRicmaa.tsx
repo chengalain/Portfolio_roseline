@@ -17,7 +17,7 @@ export default function FontRicmaa() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-14"
         >
           {language === "fr" ? "02 · Font" : "02 · Typeface"}
         </motion.p>
@@ -167,7 +167,7 @@ export default function FontRicmaa() {
                 transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                 className="mt-3 flex justify-center md:justify-start md:ml-[240px]"
               >
-                <ArrowUp className="h-4 w-4 text-foreground/25" />
+                <ArrowUp className="h-4 w-4 text-foreground/50" />
               </motion.div>
             </motion.div>
 
