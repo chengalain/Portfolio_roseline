@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
@@ -89,6 +89,53 @@ function KeywordSet({ language }: { language: "fr" | "en" }) {
 
 export default function MarqueeStrip() {
   const { language } = useLanguage();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const [dragging, setDragging] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+    setDragging(true);
+    startX.current = e.pageX - (trackRef.current?.offsetLeft ?? 0);
+    scrollLeft.current = trackRef.current?.scrollLeft ?? 0;
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - trackRef.current.offsetLeft;
+    const el = trackRef.current;
+    el.scrollLeft = scrollLeft.current - (x - startX.current);
+    loopScroll(el);
+  };
+
+  const onDragEnd = () => {
+    isDragging.current = false;
+    setDragging(false);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].pageX - (trackRef.current?.offsetLeft ?? 0);
+    scrollLeft.current = trackRef.current?.scrollLeft ?? 0;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!trackRef.current) return;
+    const el = trackRef.current;
+    const x = e.touches[0].pageX - el.offsetLeft;
+    el.scrollLeft = scrollLeft.current - (x - startX.current);
+    loopScroll(el);
+  };
+
+  const loopScroll = (el: HTMLDivElement) => {
+    const half = el.scrollWidth / 2;
+    if (el.scrollLeft >= half) el.scrollLeft -= half;
+    if (el.scrollLeft <= 0) el.scrollLeft += half;
+  };
 
   return (
     <motion.div
@@ -108,10 +155,20 @@ export default function MarqueeStrip() {
       </div>
 
       {/* Marquee */}
-      <div className="group relative overflow-hidden py-7">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-background to-transparent" />
-        <div className="marquee-scroll group-hover:[animation-play-state:paused] flex w-max gap-6">
+      <div
+        ref={trackRef}
+        className="relative overflow-x-auto py-7 scrollbar-hide select-none"
+        style={{ cursor: dragging ? "grabbing" : "grab" }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onDragEnd}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => { onDragEnd(); setHovered(false); }}
+        onDragStart={(e) => e.preventDefault()}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+      >
+        <div className={`flex w-max gap-6 marquee-scroll`} style={{ animationPlayState: dragging || hovered ? "paused" : "running" }}>
           <KeywordSet language={language} />
           <KeywordSet language={language} />
         </div>
