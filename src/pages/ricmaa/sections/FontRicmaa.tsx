@@ -90,7 +90,7 @@ export default function FontRicmaa() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.25 }}
                   className="text-foreground/80 select-none flex-shrink-0 flex items-center md:border-r border-foreground/10 md:pr-6"
-                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: activeWeight, fontSize: "clamp(4rem, 18vw, 8rem)", lineHeight: 1 }}
+                  style={{ fontFamily: "'Poppins', sans-serif", fontWeight: activeWeight, fontSize: "clamp(2rem, 10vw, 8rem)", lineHeight: 1 }}
                 >
                   Aa
                 </motion.div>

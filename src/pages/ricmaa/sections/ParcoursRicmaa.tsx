@@ -139,19 +139,6 @@ export default function ParcoursRicmaa() {
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
-                {/* Flèches mobile */}
-                <button
-                  onClick={goPrev}
-                  className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-10 text-foreground/70 hover:text-foreground transition-colors"
-                >
-                  <ChevronLeft className="h-7 w-7" />
-                </button>
-                <button
-                  onClick={goNext}
-                  className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-10 text-foreground/70 hover:text-foreground transition-colors"
-                >
-                  <ChevronRight className="h-7 w-7" />
-                </button>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.img
                     key={currentSlide}
@@ -180,15 +167,23 @@ export default function ParcoursRicmaa() {
 
             </div>
 
-            {/* Dots — mobile uniquement */}
-            <div className="flex md:hidden justify-center gap-2 mt-4">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setDirection(i > currentSlide ? 1 : -1); setCurrentSlide(i); }}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-foreground/80 w-4" : "bg-foreground/25"}`}
-                />
-              ))}
+            {/* Dots + flèches — mobile uniquement */}
+            <div className="flex md:hidden justify-center items-center gap-4 mt-4">
+              <button onClick={goPrev} className="text-foreground/70 hover:text-foreground transition-colors">
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <div className="flex items-center gap-2">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setDirection(i > currentSlide ? 1 : -1); setCurrentSlide(i); }}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-foreground/80 w-6" : "bg-foreground/25 w-2.5"}`}
+                  />
+                ))}
+              </div>
+              <button onClick={goNext} className="text-foreground/70 hover:text-foreground transition-colors">
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
 
           </motion.div>

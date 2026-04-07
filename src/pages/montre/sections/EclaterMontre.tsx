@@ -55,7 +55,7 @@ export default function EclaterMontre() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="overflow-hidden rounded-sm"
-          style={{ height: "500px" }}
+          style={{ height: "clamp(300px, 50vh, 500px)" }}
         >
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
             <ambientLight intensity={0.8} />
