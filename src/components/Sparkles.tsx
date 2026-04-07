@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const SPARKLE_COUNT = 60;
+const SPARKLE_COUNT = 85;
 
 interface SparkleData {
   id: number;
