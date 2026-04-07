@@ -35,16 +35,16 @@ export default function EclaterMontre() {
   const { language } = useLanguage();
 
   return (
-    <section id="eclater" className="w-full bg-background">
+    <section id="eclater" className="w-full px-8 md:px-20 pb-16 bg-background">
 
-      <div className="max-w-5xl mx-auto px-8 md:px-20 py-24">
+      <div className="max-w-5xl mx-auto">
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-14"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 pt-10 mb-14 relative z-10"
         >
           {language === "fr" ? "03 · Éclaté" : "03 · Exploded view"}
         </motion.p>

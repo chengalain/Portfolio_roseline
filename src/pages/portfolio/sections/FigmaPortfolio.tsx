@@ -10,7 +10,7 @@ export default function FigmaPortfolio() {
   return (
     <section id="figma" className="w-full px-6 md:px-20 py-16 md:py-24 border-t border-foreground/10">
       <div className="max-w-4xl mx-auto">
-        <p className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4">
+        <p className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-4">
           {language === "fr" ? "01 · Conception Figma" : "01 · Figma Design"}
         </p>
         <h2

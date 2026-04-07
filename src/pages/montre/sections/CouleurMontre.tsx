@@ -14,7 +14,7 @@ export default function CouleurMontre() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="md:hidden text-xs uppercase tracking-[0.35em] text-foreground/25 px-6 pt-10 pb-6"
+        className="md:hidden text-xs uppercase tracking-[0.35em] text-foreground/50 px-6 pt-10 pb-6"
       >
         {language === "fr" ? "02 · Couleur" : "02 · Color"}
       </motion.p>
@@ -34,7 +34,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="hidden md:block absolute top-10 left-16 lg:left-[336px] z-20 text-xs uppercase tracking-[0.35em] text-foreground/25"
+          className="hidden md:block absolute top-10 left-16 lg:left-[336px] z-20 text-xs uppercase tracking-[0.35em] text-foreground/50"
         >
           {language === "fr" ? "02 · Couleur" : "02 · Color"}
         </motion.p>

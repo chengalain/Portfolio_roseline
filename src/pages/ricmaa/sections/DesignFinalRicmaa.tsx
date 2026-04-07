@@ -36,7 +36,7 @@ export default function DesignFinalRicmaa() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-4"
         >
           {language === "fr" ? "05 · Design final" : "05 · Final design"}
         </motion.p>

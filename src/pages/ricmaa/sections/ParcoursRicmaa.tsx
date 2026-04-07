@@ -44,7 +44,7 @@ export default function ParcoursRicmaa() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-xs uppercase tracking-[0.35em] text-foreground/25 mb-4"
+          className="text-xs uppercase tracking-[0.35em] text-foreground/50 mb-4"
         >
           {language === "fr" ? "04 · Parcours utilisateur" : "04 · User journey"}
         </motion.p>
@@ -75,7 +75,7 @@ export default function ParcoursRicmaa() {
             transition={{ duration: 0.7 }}
             className="w-full md:w-[60%] self-center"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/50 mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
               {language === "fr" ? "01 · Accueil" : "01 · Home"}
             </p>
             <div className="overflow-hidden">
@@ -110,7 +110,7 @@ export default function ParcoursRicmaa() {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col items-center text-center mb-4"
               >
-                <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/25 mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/50 mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   {String(currentSlide + 2).padStart(2, "0")} · {slides[currentSlide].label}
                 </p>
                 <p className="text-xs text-foreground/35" style={{ fontFamily: "'Poppins', sans-serif" }}>

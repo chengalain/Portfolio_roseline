@@ -23,7 +23,7 @@ export default function ContexteMontre() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-xs uppercase tracking-[0.35em] text-foreground/25 px-6 md:px-16 lg:px-[336px] pt-10 mb-10 md:mb-14"
+        className="text-xs uppercase tracking-[0.35em] text-foreground/50 px-6 md:px-16 lg:px-[336px] pt-10 mb-10 md:mb-14"
       >
         {language === "fr" ? "01 · Contexte" : "01 · Context"}
       </motion.p>
