@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import logo from "/logo.png";
+import { useTheme } from "@/lib/theme";
 
 interface LoadingProps {
   reduceMotion?: boolean;
 }
 
 export default function Loading({ reduceMotion = false }: LoadingProps) {
+  const { theme } = useTheme();
+  const logo = theme === "light" ? "/logo_blanc.png" : "/logo.png";
   return (
     <motion.div
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background"
