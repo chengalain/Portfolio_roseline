@@ -63,7 +63,11 @@ export default function App() {
   }, [language, pathname]);
 
   return (
-    <Routes>
+    <>
+      <CustomCursor />
+      <PetalTrail />
+      <Sparkles />
+      <Routes>
       <Route path="/projets/ricmaa" element={<ProjectRicmaa />} />
       <Route path="/projets/montre" element={<ProjectMontre />} />
       <Route path="/projets/portfolio" element={<ProjectPortfolio />} />
@@ -75,9 +79,6 @@ export default function App() {
 
           {!loading && (
             <div className="relative min-h-screen">
-              <Sparkles />
-              <PetalTrail />
-              <CustomCursor />
               <GradientOrbs />
               <Navbar />
               <ScrollToTop />
@@ -94,5 +95,6 @@ export default function App() {
         </>
       } />
     </Routes>
+    </>
   );
 }
