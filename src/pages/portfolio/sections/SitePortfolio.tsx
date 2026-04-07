@@ -20,8 +20,8 @@ export default function SitePortfolio() {
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-8">
           {language === "fr"
-            ? "J'ai ensuite transformé cette première maquette en site statique HTML, CSS et JavaScript. Ce passage design → code m'a permis de poser les bases techniques du portfolio avant les versions plus avancées en React."
-            : "I then turned this first mockup into a static website in HTML, CSS, and JavaScript. This design-to-code step helped me build the technical foundations of the portfolio before more advanced React versions."}
+            ? "J'ai ensuite transformé cette première maquette en site statique HTML, CSS et JavaScript. Ce passage design → code m'a permis de concrétiser visuellement mon univers et de donner vie à mes créations."
+            : "I then turned this first mockup into a static website in HTML, CSS, and JavaScript. This design-to-code step allowed me to bring my visual universe to life and make my creations tangible."}
         </p>
         <a
           href={SITE_LINK}
