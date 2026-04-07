@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useLanguage } from "@/lib/language";
 import montrePrincipal from "@/assets/images/Projects/blender/accueil/montre_principal.png";
+import montreFond from "@/assets/images/Projects/blender/context/montre_fond.png";
 import montre1 from "@/assets/images/Projects/blender/accueil/montre_1.png";
 import montre2 from "@/assets/images/Projects/blender/accueil/montre_2.png";
 import montre3 from "@/assets/images/Projects/blender/accueil/montre_3.png";
@@ -20,23 +21,34 @@ const stagger = {
 
 const FLOATING_IMAGES = [
   { src: montre1, alt: "Montre vue 1", top: "8%",  left: "4%",  width: "18%", rotate: -12 },
+  { src: montre1, alt: "Montre vue 1 bis", top: "26%", left: "14%", width: "11%", rotate: 7 },
   { src: montre2, alt: "Montre vue 2", top: "55%", left: "2%",  width: "16%", rotate: 8  },
+  { src: montre2, alt: "Montre vue 2 bis", top: "20%", left: "28%", width: "10%", rotate: -9 },
+  { src: montre2, alt: "Montre vue 2 ter", top: "70%", left: "16%", width: "9%", rotate: 12 },
   { src: montre3, alt: "Montre vue 3", top: "5%",  left: "76%", width: "20%", rotate: 10 },
   { src: montre4, alt: "Montre vue 4", top: "60%", left: "78%", width: "17%", rotate: -7 },
+  { src: montre4, alt: "Montre vue 4 mini", top: "12%", left: "68%", width: "8%", rotate: 15 },
   { src: montre5, alt: "Montre vue 5", top: "18%", left: "60%", width: "14%", rotate: 4  },
 ];
 
 export default function HeroMontre() {
-  const constraintsRef = useRef<HTMLElement>(null);
+  const constraintsRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
 
   return (
     <>
       {/* ── HERO — composition draggable ── */}
       <motion.section
-        ref={constraintsRef}
         className="relative w-screen h-screen overflow-hidden bg-background"
       >
+        <div ref={constraintsRef} className="absolute -inset-40" />
+        <img
+          src={montreFond}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.38)" }}
+        />
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
