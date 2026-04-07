@@ -15,6 +15,7 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
+import Sparkles from "@/components/Sparkles";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
 import { useLanguage } from "@/lib/language";
 import { setPageMetadata } from "@/lib/seo";
@@ -73,6 +74,7 @@ export default function App() {
 
           {!loading && (
             <div className="relative min-h-screen">
+              <Sparkles />
               <CustomCursor />
               <GradientOrbs />
               <Navbar />
