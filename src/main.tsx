@@ -6,6 +6,10 @@ import { ThemeProvider } from "./lib/theme";
 import { LanguageProvider } from "./lib/language";
 import "./index.css";
 
+document.addEventListener("contextmenu", (e) => {
+  if (e.target instanceof HTMLImageElement) e.preventDefault();
+});
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
