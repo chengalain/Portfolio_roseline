@@ -1,6 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import usePrefersReducedMotion from "@/lib/usePrefersReducedMotion";
+import { useTheme } from "@/lib/theme";
+import sourieNoir from "@/assets/images/cursor/sourie_noir.png";
+import sourieBlanc from "@/assets/images/cursor/sourie_blanc.png";
 
 const LINK_SELECTORS =
   "a, button, [data-cursor-hover]";
@@ -10,6 +13,8 @@ export default function CustomCursor() {
   const [hidden, setHidden] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { theme } = useTheme();
+  const cursorImg = theme === "light" ? sourieNoir : sourieBlanc;
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -59,22 +64,19 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Small trailing dot — always visible */}
+      {/* Curseur image custom */}
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[9999]"
         style={{
           x: cursorX,
           y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
+          translateX: "-4px",
+          translateY: "-4px",
         }}
-        animate={{
-          opacity: hidden ? 0 : 1,
-          scale: hovered ? 0 : 1,
-        }}
+        animate={{ opacity: hidden ? 0 : 1, scale: hovered ? 0.8 : 1 }}
         transition={{ duration: 0.15 }}
       >
-        <div className="h-1.5 w-1.5 rounded-full bg-white" />
+        <img src={cursorImg} alt="" width={24} height={32} style={{ display: "block", userSelect: "none" }} />
       </motion.div>
 
       {/* Ring — only appears on link/button hover */}

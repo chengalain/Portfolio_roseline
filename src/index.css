@@ -44,11 +44,12 @@
 
   @media (pointer: fine) {
     a, button, [data-cursor-hover] {
-      cursor: pointer !important;
+      cursor: none !important;
     }
   }
 
   body {
+    cursor: none;
     @apply bg-background text-foreground font-sans overflow-x-hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
