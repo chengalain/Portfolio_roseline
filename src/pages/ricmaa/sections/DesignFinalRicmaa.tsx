@@ -89,7 +89,7 @@ export default function DesignFinalRicmaa() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: m1x, y: m1y }}
-            className="absolute top-0 left-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
+            className="absolute top-0 left-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm  z-10"
           >
             <img src={mokup1} alt="Mockup Ricmaa 1" className="w-full object-cover" />
           </motion.div>
@@ -101,7 +101,7 @@ export default function DesignFinalRicmaa() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             style={{ x: m2x, y: m2y }}
-            className="absolute bottom-0 right-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm shadow-2xl z-10"
+            className="absolute bottom-0 right-0 w-[70%] sm:w-[55%] md:w-[48%] overflow-hidden rounded-sm  z-10"
           >
             <img src={mokup2} alt="Mockup Ricmaa 2" className="w-full object-cover" />
           </motion.div>
