@@ -185,3 +185,4 @@ export default function MarqueeStrip() {
     </motion.div>
   );
 }
+
