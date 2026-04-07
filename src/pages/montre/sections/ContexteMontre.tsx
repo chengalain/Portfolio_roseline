@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import montreFond from "@/assets/images/Projects/blender/context/montre_fond.png";
 import montreDeFace from "@/assets/images/Projects/blender/context/montre_de_face.png";
 import { useLanguage } from "@/lib/language";
 
@@ -37,13 +36,7 @@ export default function ContexteMontre() {
         transition={{ duration: 0.8 }}
         className="relative w-full overflow-hidden"
       >
-        {/* Fond image — pleine, non rognée */}
-        <img
-          src={montreFond}
-          alt=""
-          className="w-full h-auto block"
-          style={{ filter: "brightness(0.4)" }}
-        />
+        <div className="w-full h-[62vh] md:h-[78vh] block bg-background" />
 
         {/* Montre de face — droite, positionnée en absolu */}
         <motion.img
@@ -53,8 +46,8 @@ export default function ContexteMontre() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-0 object-contain drop-shadow-2xl"
-          style={{ width: "clamp(160px, 35vw, 640px)", right: "clamp(1rem, 8vw, 10rem)" }}
+          className="absolute -bottom-6 md:-bottom-40 object-contain drop-shadow-2xl"
+          style={{ width: "clamp(160px, 35vw, 600px)", right: "clamp(1rem, 8vw, 10rem)" }}
         />
 
         {/* Texte — bas gauche */}
@@ -64,7 +57,7 @@ export default function ContexteMontre() {
           whileInView="show"
           viewport={{ once: true }}
           className="absolute bottom-8 left-6 md:bottom-24 md:left-16 lg:left-80 z-10 pr-6"
-          style={{ maxWidth: "min(92vw, 34rem)" }}
+          style={{ maxWidth: "min(92vw, 42rem)" }}
         >
           <motion.h2
             variants={fadeUp}
