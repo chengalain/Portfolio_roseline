@@ -259,9 +259,9 @@ export default function Projects() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
             <motion.p
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
+              animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50"
+              className="text-[11px] uppercase tracking-[0.3em] text-foreground/70"
             >
               {activeIndex < count - 1
                 ? language === "fr"

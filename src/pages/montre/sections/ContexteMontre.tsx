@@ -34,7 +34,7 @@ export default function ContexteMontre() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative w-full overflow-hidden"
+        className="relative w-full"
       >
         <div className="w-full h-[62vh] md:h-[78vh] block bg-background" />
 
@@ -46,8 +46,8 @@ export default function ContexteMontre() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -bottom-6 md:-bottom-40 object-contain drop-shadow-2xl"
-          style={{ width: "clamp(160px, 35vw, 600px)", right: "clamp(1rem, 8vw, 10rem)" }}
+          className="absolute bottom-8 object-contain drop-shadow-2xl"
+          style={{ width: "clamp(90px, 16vw, 280px)", right: "clamp(8rem, 20vw, 22rem)" }}
         />
 
         {/* Texte — bas gauche */}
