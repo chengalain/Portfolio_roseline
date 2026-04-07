@@ -48,7 +48,7 @@ export default function HeroMontre() {
           src={montreFond}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: theme === "light" ? "brightness(0.85) invert(1)" : "brightness(0.38)" }}
+          style={{ filter: theme === "light" ? "brightness(0.85)" : "brightness(0.38)" }}
         />
 
         <motion.p
