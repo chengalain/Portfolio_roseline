@@ -52,7 +52,7 @@ export default function ModelisationMontre() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-3 gap-4 mt-20"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-20"
         >
           {[
             { src: montreNoir,   alt: "Montre noire"   },

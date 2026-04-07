@@ -76,7 +76,7 @@ export default function CouleurRicmaa() {
               />
 
               {/* Nom */}
-              <div className="flex items-center px-6 border-r border-white/8 w-[160px] flex-shrink-0">
+              <div className="flex items-center px-4 md:px-6 border-r border-white/8 w-[100px] md:w-[160px] flex-shrink-0">
                 <p
                   className="text-sm font-medium"
                   style={{ fontFamily: "'Poppins', sans-serif", color: "rgba(255,255,255,0.8)" }}

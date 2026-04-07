@@ -125,7 +125,7 @@ export default function Experience() {
                       className="absolute bottom-4 right-8 select-none pointer-events-none leading-none"
                       style={{
                         fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: "clamp(7rem, 16vw, 13rem)",
+                        fontSize: "clamp(4rem, 12vw, 13rem)",
                         fontWeight: 700,
                         color: "hsl(var(--border))",
                         lineHeight: 1,

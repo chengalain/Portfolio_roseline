@@ -97,7 +97,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full h-auto block relative -top-40 -mb-20"
+          className="w-full h-auto block relative -top-10 md:-top-40 -mb-10 md:-mb-20"
         />
 
         <div className="md:hidden px-6 py-8 space-y-4">

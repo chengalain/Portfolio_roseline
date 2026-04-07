@@ -25,7 +25,7 @@ export default function ContexteRicmaa() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-sm grid grid-cols-1 md:grid-cols-2 items-center min-h-[600px]"
+            className="relative overflow-hidden rounded-sm grid grid-cols-1 md:grid-cols-2 items-center min-h-[300px] md:min-h-[600px]"
           >
             {/* Colonne gauche — ric_insta */}
             <div className="relative z-10 flex justify-center items-center p-10">
