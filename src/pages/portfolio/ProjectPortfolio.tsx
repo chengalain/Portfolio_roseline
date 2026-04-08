@@ -35,7 +35,7 @@ export default function ProjectPortfolio() {
   }, []);
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="relative z-[1]">
       <NavbarPortfolio />
 
       <motion.button

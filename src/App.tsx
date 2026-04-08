@@ -78,7 +78,7 @@ export default function App() {
           </AnimatePresence>
 
           {!loading && (
-            <div className="relative min-h-screen">
+            <div className="relative min-h-screen z-[1]">
               <GradientOrbs />
               <Navbar />
               <ScrollToTop />

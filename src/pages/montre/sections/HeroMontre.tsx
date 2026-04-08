@@ -41,7 +41,7 @@ export default function HeroMontre() {
     <>
       {/* ── HERO — composition draggable ── */}
       <motion.section
-        className="relative w-screen h-screen overflow-hidden bg-background"
+        className="relative w-screen h-screen overflow-hidden"
       >
         <div ref={constraintsRef} className="absolute -inset-40" />
         <img
@@ -103,7 +103,7 @@ export default function HeroMontre() {
       </motion.section>
 
       {/* ── INTRO ── */}
-      <section className="w-full py-24 px-8 md:px-20 bg-background">
+      <section className="w-full py-24 px-8 md:px-20">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={stagger}

@@ -7,7 +7,7 @@ export default function CouleurRicmaa() {
   const { language } = useLanguage();
 
   return (
-    <section id="couleurs" className="w-full px-8 md:px-20 pb-16 bg-background">
+    <section id="couleurs" className="w-full px-8 md:px-20 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p

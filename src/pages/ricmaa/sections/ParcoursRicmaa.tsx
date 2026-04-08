@@ -37,7 +37,7 @@ export default function ParcoursRicmaa() {
   };
 
   return (
-    <section id="parcours" className="w-full px-8 md:px-20 pt-10 pb-16 bg-background">
+    <section id="parcours" className="w-full px-8 md:px-20 pt-10 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p

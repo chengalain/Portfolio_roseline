@@ -6,7 +6,7 @@ export default function IntroRicmaa() {
   const { language } = useLanguage();
 
   return (
-    <section className="w-full py-24 px-8 md:px-20 bg-background">
+    <section className="w-full py-24 px-8 md:px-20">
       <div className="max-w-5xl mx-auto">
         <motion.div
           variants={stagger}

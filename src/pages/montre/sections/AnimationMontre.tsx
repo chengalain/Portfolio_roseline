@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/language";
 export default function AnimationMontre() {
   const { language } = useLanguage();
   return (
-    <section id="animation" className="w-full px-8 md:px-20 pb-16 bg-background">
+    <section id="animation" className="w-full px-8 md:px-20 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p

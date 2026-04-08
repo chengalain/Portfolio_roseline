@@ -24,7 +24,7 @@ export default function InteractifMontre() {
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
 
   return (
-    <section id="interactif" className="w-full px-8 md:px-20 pb-16 bg-background">
+    <section id="interactif" className="w-full px-8 md:px-20 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
