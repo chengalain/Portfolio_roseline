@@ -58,8 +58,6 @@ export default function CustomCursor() {
     };
   }, [onMouseMove]);
 
-  if (prefersReducedMotion) return null;
-
   return (
     <>
       {/* Curseur image custom */}
@@ -71,34 +69,36 @@ export default function CustomCursor() {
           translateX: "-4px",
           translateY: "-4px",
         }}
-        animate={{ opacity: hidden ? 0 : 1, scale: hovered ? 0.8 : 1 }}
-        transition={{ duration: 0.15 }}
+        animate={{ opacity: hidden ? 0 : 1, scale: hovered && !prefersReducedMotion ? 0.8 : 1 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.15 }}
       >
         <img src={cursorImg} alt="" width={24} height={32} style={{ display: "block", userSelect: "none" }} />
       </motion.div>
 
-      {/* Ring — only appears on link/button hover */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
-        style={{
-          x: ringX,
-          y: ringY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          opacity: hidden ? 0 : hovered ? 1 : 0,
-          scale: hovered ? 1 : 0.5,
-          width: 56,
-          height: 56,
-        }}
-        transition={{ type: "spring", damping: 20, stiffness: 300 }}
-      >
-        <div
-          className="h-full w-full rounded-full border border-white/60"
-          style={{ background: "rgba(255,255,255,0.06)" }}
-        />
-      </motion.div>
+      {/* Ring — only appears on link/button hover, hidden when reduced motion */}
+      {!prefersReducedMotion && (
+        <motion.div
+          className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
+          style={{
+            x: ringX,
+            y: ringY,
+            translateX: "-50%",
+            translateY: "-50%",
+          }}
+          animate={{
+            opacity: hidden ? 0 : hovered ? 1 : 0,
+            scale: hovered ? 1 : 0.5,
+            width: 56,
+            height: 56,
+          }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+        >
+          <div
+            className="h-full w-full rounded-full border border-white/60"
+            style={{ background: "rgba(255,255,255,0.06)" }}
+          />
+        </motion.div>
+      )}
     </>
   );
 }
