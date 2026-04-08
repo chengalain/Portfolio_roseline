@@ -5,19 +5,17 @@ import { useTheme } from "@/lib/theme";
 import sourieNoir from "@/assets/images/cursor/sourie_noir.png";
 import sourieBlanc from "@/assets/images/cursor/sourie_blanc.png";
 
-const LINK_SELECTORS =
-  "a, button, [data-cursor-hover]";
+const LINK_SELECTORS = "a, button, [data-cursor-hover]";
 
 export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
   const { theme } = useTheme();
   const cursorImg = theme === "light" ? sourieNoir : sourieBlanc;
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
+  const cursorX = useMotionValue(-200);
+  const cursorY = useMotionValue(-200);
 
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const ringX = useSpring(cursorX, springConfig);
@@ -27,15 +25,12 @@ export default function CustomCursor() {
     (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+      setHidden(false);
     },
     [cursorX, cursorY]
   );
 
   useEffect(() => {
-    const hasTouch = !window.matchMedia("(any-pointer: fine)").matches;
-    setIsTouchDevice(hasTouch);
-    if (hasTouch) return;
-
     window.addEventListener("mousemove", onMouseMove, { passive: true });
     window.addEventListener("mouseleave", () => setHidden(true));
     window.addEventListener("mouseenter", () => setHidden(false));
@@ -63,7 +58,7 @@ export default function CustomCursor() {
     };
   }, [onMouseMove]);
 
-  if (isTouchDevice || prefersReducedMotion) return null;
+  if (prefersReducedMotion) return null;
 
   return (
     <>
