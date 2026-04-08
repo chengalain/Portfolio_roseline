@@ -11,6 +11,9 @@ export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [hidden, setHidden] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const hasFinePointer = typeof window !== "undefined" && window.matchMedia("(any-pointer: fine)").matches;
+
+  if (!hasFinePointer) return null;
   const { theme } = useTheme();
   const cursorImg = theme === "light" ? sourieNoir : sourieBlanc;
 
