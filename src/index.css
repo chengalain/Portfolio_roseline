@@ -42,14 +42,19 @@
     scroll-padding-top: 5rem;
   }
 
-  @media (pointer: fine) {
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
     *, a, button, [data-cursor-hover] {
       cursor: none !important;
     }
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      cursor: none;
+    }
+  }
+
   body {
-    cursor: none;
     @apply bg-background text-foreground font-sans overflow-x-hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
