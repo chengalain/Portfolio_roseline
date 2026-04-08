@@ -6,7 +6,7 @@ export default function CouleurMontre() {
   const { language } = useLanguage();
 
   return (
-    <section id="couleur" className="w-full relative bg-background">
+    <section id="couleur" className="w-full relative">
 
       {/* Label section — en flow sur mobile, absolu sur desktop */}
       <motion.p

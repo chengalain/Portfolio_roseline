@@ -16,7 +16,7 @@ export default function ExplicationMontre() {
   const { language } = useLanguage();
 
   return (
-    <section id="explication" className="w-full px-8 md:px-20 pb-16 bg-background">
+    <section id="explication" className="w-full px-8 md:px-20 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p

@@ -16,7 +16,7 @@ export default function ContexteMontre() {
   const { language } = useLanguage();
 
   return (
-    <section id="contexte" className="w-full bg-background">
+    <section id="contexte" className="w-full">
 
       <motion.p
         initial={{ opacity: 0 }}

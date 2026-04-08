@@ -10,7 +10,7 @@ export default function FontRicmaa() {
   const { language } = useLanguage();
 
   return (
-    <section id="font" className="w-full px-6 md:px-20 pb-16 bg-background">
+    <section id="font" className="w-full px-6 md:px-20 pb-16">
       <div className="max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}

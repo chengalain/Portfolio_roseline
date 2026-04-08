@@ -39,7 +39,7 @@ export default function ProjectRicmaa() {
   }, []);
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="relative z-[1]">
       <NavbarRicmaa />
 
       {/* Bouton scroll-to-top */}

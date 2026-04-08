@@ -29,7 +29,7 @@ export default function DesignFinalRicmaa() {
   }, [mouseX, mouseY]);
 
   return (
-    <section id="design-final" className="w-full px-6 md:px-20 pt-10 pb-16 bg-background">
+    <section id="design-final" className="w-full px-6 md:px-20 pt-10 pb-16">
       <div className="max-w-5xl mx-auto">
 
         <motion.p
