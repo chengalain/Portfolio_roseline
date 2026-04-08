@@ -65,7 +65,7 @@ export default function HeroMontre() {
           style={{ background: "linear-gradient(to bottom, transparent, hsl(var(--background)))" }}
         />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32%] z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] md:w-[45%] z-10">
           <motion.img
             src={montrePrincipal}
             alt="Montre principale"
