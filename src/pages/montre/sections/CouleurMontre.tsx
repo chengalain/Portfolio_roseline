@@ -2,97 +2,91 @@ import { motion } from "framer-motion";
 import montreCouleur from "@/assets/images/Projects/blender/couleur/montre_couleur.png";
 import { useLanguage } from "@/lib/language";
 
+const COLORS = [
+  {
+    nameFr: <>Noir <span className="font-light italic">Cacao</span></>,
+    nameEn: <>Black <span className="font-light italic">Cacao</span></>,
+    hex: "#0F0908",
+    codes: [
+      { label: "HEX",  value: "#0F0908" },
+      { label: "RGB",  value: "15, 9, 8" },
+      { label: "CMYK", value: "0, 41, 47, 94" },
+      { label: "HSL",  value: "9°, 31%, 5%" },
+    ],
+  },
+  {
+    nameFr: <>Brun <span className="font-light italic">Terracotta</span></>,
+    nameEn: <>Brown <span className="font-light italic">Terracotta</span></>,
+    hex: "#B0584B",
+    codes: [
+      { label: "HEX",  value: "#B0584B" },
+      { label: "RGB",  value: "176, 88, 75" },
+      { label: "CMYK", value: "0, 50, 57, 31" },
+      { label: "HSL",  value: "8°, 40%, 49%" },
+    ],
+  },
+];
+
 export default function CouleurMontre() {
   const { language } = useLanguage();
 
   return (
     <section id="couleur" className="w-full relative">
 
-      {/* Label section — en flow sur mobile, absolu sur desktop */}
+      {/* Label */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="md:hidden text-xs uppercase tracking-[0.35em] text-foreground/50 px-6 pt-10 pb-6"
+        className="text-xs uppercase tracking-[0.35em] text-foreground/50 px-6 md:px-16 lg:px-[336px] pt-10 pb-6"
       >
         {language === "fr" ? "02 · Couleur" : "02 · Color"}
       </motion.p>
 
-      {/* Image pleine largeur */}
+      {/* Image */}
       <div className="relative">
-
-        {/* Fondu haut — raccord avec Contexte (desktop seulement) */}
         <div
-          className="hidden md:block absolute top-0 left-0 w-full h-40 pointer-events-none z-10"
+          className="hidden lg:block absolute top-0 left-0 w-full h-40 pointer-events-none z-10"
           style={{ background: "linear-gradient(to top, transparent, hsl(var(--background)))" }}
         />
 
-        {/* Label section — desktop uniquement, absolu */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="hidden md:block absolute top-10 left-16 lg:left-[336px] z-20 text-xs uppercase tracking-[0.35em] text-foreground/50"
-        >
-          {language === "fr" ? "02 · Couleur" : "02 · Color"}
-        </motion.p>
-
-        {/* Haut gauche — Noir CACAO */}
+        {/* Noir Cacao — desktop overlay */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-20 left-4 md:top-40 md:left-[20%] z-20 hidden md:flex items-stretch gap-4"
+          className="absolute top-40 left-[20%] z-20 hidden lg:flex items-stretch gap-4"
         >
-          {/* Texte */}
           <div className="flex flex-col gap-1">
             <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              {language === "fr"
-                ? <>Noir <span className="font-light italic">Cacao</span></>
-                : <>Black <span className="font-light italic">Cacao</span></>}
+              {language === "fr" ? COLORS[0].nameFr : COLORS[0].nameEn}
             </p>
-            {[
-              { label: "HEX",  value: "#0F0908" },
-              { label: "RGB",  value: "15, 9, 8" },
-              { label: "CMYK", value: "0, 41, 47, 94" },
-              { label: "HSL",  value: "9°, 31%, 5%" },
-            ].map((row) => (
+            {COLORS[0].codes.map((row) => (
               <div key={row.label} className="flex items-baseline gap-2">
                 <span className="text-[9px] uppercase tracking-[0.25em] text-foreground/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
                 <span className="text-[11px] font-mono text-foreground/70">{row.value}</span>
               </div>
             ))}
           </div>
-          {/* Cercle */}
-          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: "#0F0908" }} />
+          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: COLORS[0].hex }} />
         </motion.div>
 
-        {/* Bas droite — Brun TERRACOTTA */}
+        {/* Brun Terracotta — desktop overlay */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-20 right-4 md:bottom-52 md:right-[20%] z-20 hidden md:flex items-stretch gap-4"
+          className="absolute bottom-52 right-[20%] z-20 hidden lg:flex items-stretch gap-4"
         >
-          {/* Cercle */}
-          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: "#B0584B" }} />
-          {/* Texte */}
+          <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: COLORS[1].hex }} />
           <div className="flex flex-col gap-1">
             <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              {language === "fr"
-                ? <>Brun <span className="font-light italic">Terracotta</span></>
-                : <>Brown <span className="font-light italic">Terracotta</span></>}
+              {language === "fr" ? COLORS[1].nameFr : COLORS[1].nameEn}
             </p>
-            {[
-              { label: "HEX",  value: "#B0584B" },
-              { label: "RGB",  value: "176, 88, 75" },
-              { label: "CMYK", value: "0, 50, 57, 31" },
-              { label: "HSL",  value: "8°, 40%, 49%" },
-            ].map((row) => (
+            {COLORS[1].codes.map((row) => (
               <div key={row.label} className="flex items-baseline gap-2">
                 <span className="text-[9px] uppercase tracking-[0.25em] text-foreground/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
                 <span className="text-[11px] font-mono text-foreground/70">{row.value}</span>
@@ -110,22 +104,35 @@ export default function CouleurMontre() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="w-full h-auto block relative -top-10 md:-top-40 -mb-10 md:-mb-20"
         />
+      </div>
 
-        <div className="md:hidden px-6 py-8 space-y-4">
-          <div className="rounded-xl border border-border/40 p-4">
-            <p className="text-sm font-semibold mb-2">
-              {language === "fr" ? "Noir Cacao" : "Black Cacao"}
-            </p>
-            <p className="text-xs text-muted-foreground font-mono">#0F0908 · RGB 15,9,8</p>
-          </div>
-          <div className="rounded-xl border border-border/40 p-4">
-            <p className="text-sm font-semibold mb-2">
-              {language === "fr" ? "Brun Terracotta" : "Brown Terracotta"}
-            </p>
-            <p className="text-xs text-muted-foreground font-mono">#B0584B · RGB 176,88,75</p>
-          </div>
-        </div>
-
+      {/* Mobile + Tablette — swatches sous l'image */}
+      <div className="lg:hidden px-6 md:px-16 pb-10 grid grid-cols-2 gap-4">
+        {COLORS.map((color, i) => (
+          <motion.div
+            key={color.hex}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="rounded-xl border border-border/40 p-4 flex flex-col gap-3"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full border border-foreground/20 flex-shrink-0" style={{ backgroundColor: color.hex }} />
+              <p className="text-sm font-semibold leading-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                {language === "fr" ? color.nameFr : color.nameEn}
+              </p>
+            </div>
+            <div className="space-y-1">
+              {color.codes.map((row) => (
+                <div key={row.label} className="flex items-baseline gap-2">
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-foreground/30 w-8" style={{ fontFamily: "'Poppins', sans-serif" }}>{row.label}</span>
+                  <span className="text-[10px] font-mono text-foreground/65">{row.value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
 
     </section>
