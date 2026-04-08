@@ -50,13 +50,17 @@ export default function CustomCursor() {
       if (target.closest(LINK_SELECTORS)) setHovered(false);
     };
 
+    const onClick = () => setHovered(false);
+
     document.addEventListener("mouseover", onOver, { passive: true });
     document.addEventListener("mouseout", onOut, { passive: true });
+    document.addEventListener("click", onClick, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", onOver);
       document.removeEventListener("mouseout", onOut);
+      document.removeEventListener("click", onClick);
     };
   }, [onMouseMove]);
 
