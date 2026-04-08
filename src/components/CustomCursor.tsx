@@ -32,8 +32,7 @@ export default function CustomCursor() {
   );
 
   useEffect(() => {
-    const hasTouch =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const hasTouch = !window.matchMedia("(pointer: fine)").matches;
     setIsTouchDevice(hasTouch);
     if (hasTouch) return;
 
