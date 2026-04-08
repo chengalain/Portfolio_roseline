@@ -43,7 +43,7 @@
   }
 
   @media (pointer: fine) {
-    a, button, [data-cursor-hover] {
+    *, a, button, [data-cursor-hover] {
       cursor: none !important;
     }
   }
