@@ -32,7 +32,7 @@ export default function CustomCursor() {
   );
 
   useEffect(() => {
-    const hasTouch = !window.matchMedia("(pointer: fine)").matches;
+    const hasTouch = !window.matchMedia("(any-pointer: fine)").matches;
     setIsTouchDevice(hasTouch);
     if (hasTouch) return;
 
