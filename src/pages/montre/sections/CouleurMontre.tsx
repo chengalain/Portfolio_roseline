@@ -47,7 +47,7 @@ export default function CouleurMontre() {
       {/* Image */}
       <div className="relative">
         <div
-          className="hidden lg:block absolute top-0 left-0 w-full h-40 pointer-events-none z-10"
+          className="hidden xl:block absolute top-0 left-0 w-full h-40 pointer-events-none z-10"
           style={{ background: "linear-gradient(to top, transparent, hsl(var(--background)))" }}
         />
 
@@ -57,7 +57,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute top-40 left-[20%] z-20 hidden lg:flex items-stretch gap-4"
+          className="absolute top-40 left-[20%] z-20 hidden xl:flex items-stretch gap-4"
         >
           <div className="flex flex-col gap-1">
             <p className="text-foreground text-base font-semibold mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -79,7 +79,7 @@ export default function CouleurMontre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute bottom-52 right-[20%] z-20 hidden lg:flex items-stretch gap-4"
+          className="absolute bottom-52 right-[20%] z-20 hidden xl:flex items-stretch gap-4"
         >
           <div className="w-20 h-20 rounded-full border border-foreground/20 flex-shrink-0 self-center" style={{ backgroundColor: COLORS[1].hex }} />
           <div className="flex flex-col gap-1">
@@ -107,7 +107,7 @@ export default function CouleurMontre() {
       </div>
 
       {/* Mobile + Tablette — swatches sous l'image */}
-      <div className="lg:hidden px-6 md:px-16 pb-10 grid grid-cols-2 gap-4">
+      <div className="xl:hidden px-6 md:px-16 pb-10 grid grid-cols-2 gap-4">
         {COLORS.map((color, i) => (
           <motion.div
             key={color.hex}

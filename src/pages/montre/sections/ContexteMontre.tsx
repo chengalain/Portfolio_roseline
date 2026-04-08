@@ -65,7 +65,7 @@ export default function ContexteMontre() {
       </div>
 
       {/* ── Tablette (768px–1023px) ── */}
-      <div className="hidden md:flex lg:hidden px-10 pb-16 items-center gap-10">
+      <div className="hidden md:flex xl:hidden px-10 pb-16 items-center gap-10">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -92,7 +92,7 @@ export default function ContexteMontre() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="relative w-full hidden lg:block"
+        className="relative w-full hidden xl:block"
       >
         <div className="w-full h-[78vh] block bg-background" />
 
