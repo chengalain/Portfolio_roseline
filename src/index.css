@@ -166,6 +166,10 @@
   filter: blur(750px);
 }
 
+.dark .white__gradient {
+  opacity: 0.04;
+}
+
 /* Noise overlay */
 body::after {
   content: '';
