@@ -24,9 +24,6 @@ export default function Footer() {
               className="h-full w-full rounded-full object-cover object-top"
             />
           </div>
-          <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-[10px] text-accent-foreground">
-            👋
-          </span>
         </div>
 
         <h2 className="section-title">{language === "fr" ? "Me contacter" : "Contact me"}</h2>
