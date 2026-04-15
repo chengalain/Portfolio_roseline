@@ -48,7 +48,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative flex h-screen overflow-hidden">
+    <section id="home" className="relative flex flex-col md:flex-row h-screen overflow-hidden">
       <LayoutGroup>
         {order.map((videoIndex, slotIndex) => {
           const slot = SLOTS[slotIndex];
@@ -62,9 +62,11 @@ export default function Hero() {
               transition={{ layout: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } }}
               style={{ flex: isCenter ? 3 : 1 }}
               className={`relative overflow-hidden border-white dark:border-black ${
-                slotIndex === 0 ? "border-r-[12px]" :
-                slotIndex === 1 ? "border-x-[12px]" :
-                                  "border-l-[12px]"
+                slotIndex === 0
+                  ? "border-b-[12px] md:border-b-0 md:border-r-[12px]"
+                  : slotIndex === 1
+                  ? "border-y-[12px] md:border-y-0 md:border-x-[12px]"
+                  : "border-t-[12px] md:border-t-0 md:border-l-[12px]"
               }${!isCenter ? " cursor-pointer" : ""}`}
               onClick={() => !isCenter && rotateTo(slot as "left" | "right")}
               onMouseEnter={() => !isCenter && setHoveredSlot(slot)}
@@ -197,7 +199,8 @@ export default function Hero() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-white/15 backdrop-blur-sm text-white text-lg">
-                    {slot === "left" ? "←" : "→"}
+                    <span className="md:hidden">{slot === "left" ? "↑" : "↓"}</span>
+                  <span className="hidden md:inline">{slot === "left" ? "←" : "→"}</span>
                   </div>
                 </motion.div>
               )}
