@@ -24,6 +24,9 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      - dependency-name: "vite"
+        update-types: ["version-update:semver-major"]
 
   # Refresh GitHub Actions runners and actions
   - package-ecosystem: "github-actions"
