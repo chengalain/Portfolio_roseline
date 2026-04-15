@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
   SiFigma,
-  SiIllustrator,
-  SiPhotoshop,
-  SiAftereffects,
-  SiPremierepro,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiAdobeaftereffects,
+  SiAdobepremierepro,
   SiNotion,
   SiCanva,
   SiBlender,
@@ -24,10 +24,10 @@ type Keyword = {
 
 const KEYWORDS: Keyword[] = [
   { label: { fr: "Figma", en: "Figma" }, icon: SiFigma, color: "#F24E1E" },
-  { label: { fr: "Adobe Illustrator", en: "Adobe Illustrator" }, icon: SiIllustrator, color: "#FF9A00" },
-  { label: { fr: "Adobe Photoshop", en: "Adobe Photoshop" }, icon: SiPhotoshop, color: "#31A8FF" },
-  { label: { fr: "Adobe After Effects", en: "Adobe After Effects" }, icon: SiAftereffects, color: "#9999FF" },
-  { label: { fr: "Adobe Premiere Pro", en: "Adobe Premiere Pro" }, icon: SiPremierepro, color: "#EA77FF" },
+  { label: { fr: "Adobe Illustrator", en: "Adobe Illustrator" }, icon: SiAdobeillustrator, color: "#FF9A00" },
+  { label: { fr: "Adobe Photoshop", en: "Adobe Photoshop" }, icon: SiAdobephotoshop, color: "#31A8FF" },
+  { label: { fr: "Adobe After Effects", en: "Adobe After Effects" }, icon: SiAdobeaftereffects, color: "#9999FF" },
+  { label: { fr: "Adobe Premiere Pro", en: "Adobe Premiere Pro" }, icon: SiAdobepremierepro, color: "#EA77FF" },
   { label: { fr: "CapCut", en: "CapCut" }, icon: RiScissorsLine, color: "#FE2C55" },
   { label: { fr: "Français · Natif", en: "French · Native" }, flag: "fr", color: "#0055A4" },
   { label: { fr: "Mandarin · Courant", en: "Mandarin · Fluent" }, flag: "cn", color: "#DE2910" },
