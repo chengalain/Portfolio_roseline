@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ProjectRicmaa from "@/pages/ricmaa/ProjectRicmaa";
@@ -23,6 +23,7 @@ import { setPageMetadata } from "@/lib/seo";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [pastHero, setPastHero] = useState(false);
   const { pathname } = useLocation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const { language } = useLanguage();
@@ -30,6 +31,12 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    const handler = () => setPastHero(window.scrollY >= window.innerHeight * 0.8);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), prefersReducedMotion ? 0 : 1200);
@@ -64,6 +71,16 @@ export default function App() {
 
   return (
     <>
+      {/* Noise overlay — masqué sur le hero */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[9999] transition-opacity duration-500"
+        style={{
+          opacity: pastHero ? 0.15 : 0,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+        }}
+      />
       <CustomCursor />
       <PetalTrail />
       <Sparkles />
