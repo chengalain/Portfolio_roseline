@@ -1,8 +1,8 @@
 import type { IconType } from "react-icons";
 import {
-  SiAdobeaftereffects,
-  SiAdobeillustrator,
-  SiAdobepremierepro,
+  SiAftereffects,
+  SiIllustrator,
+  SiPremierepro,
   SiFigma,
 } from "react-icons/si";
 
@@ -45,9 +45,9 @@ export const EXPERIENCES: Experience[] = [
               en: "Created video graphics packages and motion design animations.",
             },
             tech: [
-              { id: "pr-1", icon: SiAdobeaftereffects, name: "After Effects" },
-              { id: "pr-2", icon: SiAdobepremierepro, name: "Premiere Pro" },
-              { id: "pr-3", icon: SiAdobeillustrator, name: "Illustrator" },
+              { id: "pr-1", icon: SiAftereffects, name: "After Effects" },
+              { id: "pr-2", icon: SiPremierepro, name: "Premiere Pro" },
+              { id: "pr-3", icon: SiIllustrator, name: "Illustrator" },
             ],
           },
           {
@@ -87,7 +87,7 @@ export const EXPERIENCES: Experience[] = [
               en: "Edited short-form videos for TikTok and Instagram aligned with platform trends and formats.",
             },
             tech: [
-              { id: "rc-1", icon: SiAdobepremierepro, name: "Premiere Pro" },
+              { id: "rc-1", icon: SiPremierepro, name: "Premiere Pro" },
               { id: "rc-2", icon: SiFigma, name: "Figma" },
             ],
           },
