@@ -82,35 +82,43 @@ export default function Navbar() {
                 href={item.link}
                 className={`relative text-sm font-medium transition-colors ${
                   activeSection === item.link
-                    ? "text-accent"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? theme === "dark" ? "text-accent" : "text-foreground"
+                    : !scrolled && theme === "dark"
+                    ? "text-white/80 hover:text-white"
+                    : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {item.title[language]}
                 {activeSection === item.link && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-accent"
+                    className={`absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full ${theme === "dark" ? "bg-accent" : "bg-foreground"}`}
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
               </a>
             </Magnetic>
           ))}
-          <div className="flex items-center gap-1 rounded-full border border-border bg-card/50 px-3 py-1">
+          <div className={`flex items-center gap-1 rounded-full border px-3 py-1 transition-colors ${
+            !scrolled && theme === "dark" ? "border-white/30 bg-white/10" : "border-border bg-card/50"
+          }`}>
             <button
               onClick={() => setLanguage("fr")}
               className={`text-xs font-medium transition-colors px-1 ${
-                language === "fr" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                language === "fr"
+                  ? !scrolled && theme === "dark" ? "text-white" : "text-foreground"
+                  : !scrolled && theme === "dark" ? "text-white/60 hover:text-white" : "text-foreground/50 hover:text-foreground"
               }`}
             >
               FR
             </button>
-            <span className="text-border text-xs">|</span>
+            <span className={`text-xs ${!scrolled && theme === "dark" ? "text-white/30" : "text-border"}`}>|</span>
             <button
               onClick={() => setLanguage("en")}
               className={`text-xs font-medium transition-colors px-1 ${
-                language === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                language === "en"
+                  ? !scrolled && theme === "dark" ? "text-white" : "text-foreground"
+                  : !scrolled && theme === "dark" ? "text-white/60 hover:text-white" : "text-foreground/50 hover:text-foreground"
               }`}
             >
               EN
